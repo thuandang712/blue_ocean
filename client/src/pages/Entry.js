@@ -7,8 +7,8 @@ const Entry = () => {
         <div className='entry-page'>
             <h1 className='title'>Welcome to the ticketing system!</h1>
             <div className='btn-container'>
-                <Button className='login-btn' size='lg'>Login</Button>
-                <Button className='register-btn' size='lg'>Register</Button>
+                <Button href='/login' className='login-btn' size='lg'>Login</Button>
+                <Button href='/register' className='register-btn' size='lg'>Register</Button>
             </div>
         </div>
     )
