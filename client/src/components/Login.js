@@ -38,7 +38,7 @@ const Login = () => {
                                 value={email}
                                 onChange={handleOnChange}
                                 placeholder="Email"
-                                maxlength="30"
+                                maxLength="30"
                                 required
                             />
                         </Form.Group>
@@ -50,7 +50,7 @@ const Login = () => {
                                 onChange={handleOnChange}
                                 value={password}
                                 placeholder="Password"
-                                maxlength="30"
+                                maxLength="30"
                                 required
                             />
                         </Form.Group>
