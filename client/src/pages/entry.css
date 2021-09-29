@@ -1,0 +1,16 @@
+.entry-page {
+    height: 100vh;
+}
+
+.title {
+    margin-top: 200px;
+    font-size: 3rem;
+}
+
+.btn-container {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
