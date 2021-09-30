@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import './App.css';
 import Login from './components/Login';
-import Entry from './pages/Entry'
+import Entry from './pages/Entry';
+import { PasswordOtpForm } from './pages/password-reset/PasswordOtpFormPage';
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
         </Route>
         <Route exact path='/login'>
           <Login />
+        </Route>
+        <Route exact path = '/password-reset'>
+          <PasswordOtpForm /> 
         </Route>
       </Router>
     </div>
