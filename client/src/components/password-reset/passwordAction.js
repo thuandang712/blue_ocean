@@ -11,10 +11,10 @@ export const sendPasswordResetOtp = email => async dispatch => {
     try {
         dispatch(otpReqPending());
 
-        const {status, message} = await reqPasswordOtp(email);
+        const { status, message } = await reqPasswordOtp(email);
 
-        if(status === "success") {
-            return dispatch(otpReqSuccess({ message, email}));
+        if (status === "success") {
+            return dispatch(otpReqSuccess({ message, email }));
         }
 
         dispatch(otpReqFail(message));
@@ -27,9 +27,9 @@ export const updatePassword = frmData => async dispatch => {
     try {
         dispatch(otpReqPending());
 
-        const {status, message} = await updateUserPassword(frmData);
+        const { status, message } = await updateUserPassword(frmData);
 
-        if(status === "success") {
+        if (status === "success") {
             return dispatch(updatePassSuccess(message));
         }
 

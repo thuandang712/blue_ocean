@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {sendPasswordResetOtp} from "./passwordAction";
 
 import{
-    Container,
     Row,
     Col,
     Form,

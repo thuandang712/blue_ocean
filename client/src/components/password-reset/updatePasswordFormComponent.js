@@ -1,5 +1,5 @@
-import React, {useState, UseEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, {useState} from "react";
+import {useDispatch, useSelector, Provider} from "react-redux";
 import { updatePassword} from "./passwordAction";
 
 import{
@@ -27,7 +27,7 @@ const passwordVerificationError = {
     confirmPass: false,
 }
 
-const updatePasswordForm = () => {
+const UpdatePasswordFormComponent = () => {
     const dispatch = useDispatch();
 
     const [newPassword, setNewPassword] = useState(initialState);
@@ -81,6 +81,7 @@ const updatePasswordForm = () => {
     };
 
     return (
+        <Provider>
         <Container>
             <Row>
                 <Col>
@@ -187,7 +188,8 @@ const updatePasswordForm = () => {
                 </Col>
             </Row>
         </Container>
+        </Provider>
     );
 };
 
-export default updatePasswordForm;
+export default UpdatePasswordFormComponent;
