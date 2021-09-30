@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+import './login.style.css'
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -26,13 +27,13 @@ const Login = () => {
 
     return (
         <Container>
-            <Row>
+            <Row className="mx-auto w-50">
                 <Col>
                     <h1 className="text-info text-center mt-5">Admin Login</h1>
-                    <Form autoComplete="off" onSubmit={handleOnSubmit} >
+                    <Form autoComplete="off" onSubmit={handleOnSubmit}>
                         <Form.Group className="mb-3">
                             <Form.Label>Email Address</Form.Label>
-                            <Form.Control
+                            <Form.Control className=''
                                 type="email"
                                 name="email"
                                 value={email}
@@ -42,9 +43,9 @@ const Login = () => {
                                 required
                             />
                         </Form.Group>
-                        <Form.Group className="mb-3">
+                        <Form.Group className="mb-4">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control
+                            <Form.Control className=''
                                 type="password"
                                 name="password"
                                 onChange={handleOnChange}
@@ -55,29 +56,30 @@ const Login = () => {
                             />
                         </Form.Group>
 
-                        <Button className="mb-3" type="submit">Login</Button>
+                        <Button className="login-form-btn" type="submit">Login</Button>
+
                     </Form>
                 </Col>
             </Row>
 
-            <Row>
+            <Row className="mx-auto w-50">
                 <Col>
                     <a href="/password-reset">Forget Password?</a>
                 </Col>
             </Row>
 
-            <Row className="py-3"> {/* padding-top, padding-bottom 1 rem */}
+            <Row className="mx-auto w-50 py-3"> {/* padding-top, padding-bottom 1 rem */}
                 <Col>
                     Are you new here? <a href="/register">Register Now</a>
                 </Col>
             </Row>
 
-            <Row>
+            <Row className="mx-auto w-50">
                 <Col>
                     <a href="/">Back to home page</a>
-                </Col>
-            </Row>
-        </Container>
+                </Col >
+            </Row >
+        </Container >
     )
 }
 
