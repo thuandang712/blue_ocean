@@ -5,8 +5,8 @@
 // import { ResetPassword } from "../../components/password-reset/passwordResetComponent";
 // import updatePasswordForm from "../../components/password-reset/updatePasswordFormComponent";
 
-// import "./PasswordOtpForm.style.css";
-// import { updatePassword } from "../../components/password-reset/passwordAction";
+import "./PasswordOtpFormStyle.css";
+import { updatePassword } from "../../components/password-reset/passwordAction";
 
 // export const PasswordOtpForm = () => {
 //     const {showUpdatePassForm} = useSelector(state => state.password);
