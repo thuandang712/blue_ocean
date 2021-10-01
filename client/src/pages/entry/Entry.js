@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
-import './entry.css'
+import './entry.style.css'
 
 const Entry = () => {
     return (
