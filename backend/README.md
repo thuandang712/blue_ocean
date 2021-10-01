@@ -33,7 +33,7 @@ All the user API router follows `/api/ticket/`
 | 3   | `/api/ticket`                   | POST  | Not started | Yes        | Create a new ticket                     |
 | 4   | `/api/ticket/{id}`              | PUT   | Not started | Yes        | Update ticket details ie. reply message |
 | 5   | `/api/ticket/close-ticket/{id}` | PATCH | Not started | Yes        | Update ticket status to close           |
-| 6   | `/api/ticket/{id}`              | DELET | Not started | Yes        | Delete a ticket                         |
+| 6   | `/api/ticket/{id}`              | DELETE | Not started | Yes        | Delete a ticket                         |
 
 ### Tokens API Resources
 
