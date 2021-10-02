@@ -4,12 +4,12 @@ const mongoose = require("mongoose")
 
 // use dotenv to fix security issue
 require('dotenv').config()
-const db = process.env.mongoURI
+const db = process.env.mongoURI || 'mongodb+srv://thuandang123:thuandang123@blue-ocean.x1fl8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
 // Create db connection function USING ASYNC AWAIT
 const connectDB = async () => {
     try {
-        await mongoose.connect(db)
+        await mongoose.connect(db, { useNewUrlParser: true })
         console.log('MongoDB Connected...')
     } catch (error) {
         console.error(error)
