@@ -6,14 +6,18 @@ const { userSchema } = require('../schema/user.schema')
 // jwt helper
 const { createAccessJWT, createRefreshJWT } = require('../helpers/jwt')
 
+const { userAuth } = require('../helpers/auth')
+
 // bcrypt
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-
+// get all user if log in authorized
 router.get('/', async (req, res) => {
     try {
+        // check if user is authorized
         const result = await userSchema.find()
+        // res.status(200).json({ msg: "get route" })
         res.status(200).json(result)
     } catch (error) {
         console.log(error)
@@ -21,7 +25,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-
+// create a user
 router.post('/', async (req, res) => {
     const { first_name, last_name, phone_number, email, password } = req.body
 

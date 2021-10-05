@@ -1,13 +1,17 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors')
-require('dotenv').config()
+const path = require('path')
 
 const PORT = process.env.PORT || 5000
 
 // connect to mongoDB
 const connectDB = require('./backend/config/db')
 connectDB()
+
+
+// app.use(express.static(path.join(__dirname, '/client/build')))
 
 
 // middle wares
@@ -19,6 +23,13 @@ app.use(cors())
 app.use('/api/user', require('./backend/routes/user.route'))
 app.use('/api/ticket', require('./backend/routes/ticket.route'))
 
+
+// Step 1:
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+// Step 2:
+app.get("*", function (request, response) {
+    response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
 
 // error handler
 // unknown http reqs
