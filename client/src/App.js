@@ -1,3 +1,5 @@
+const express = require('express');
+const app = express();
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -10,7 +12,7 @@ import Tickets from './components/Tickets/Tickets';
 import Login from './components/login/Login';
 import Entry from './pages/entry/Entry';
 
-import PasswordOtpFormPage  from './pages/password-reset/PasswordOtpFormPage';
+import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
 
 
 
@@ -25,8 +27,8 @@ function App() {
           <Login />
         </Route>
 
-        <Route exact path = '/password-reset'>
-          <PasswordOtpFormPage /> 
+        <Route exact path='/password-reset'>
+          <PasswordOtpFormPage />
         </Route>
 
       </Router>

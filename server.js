@@ -6,7 +6,7 @@ require('dotenv').config()
 const PORT = process.env.PORT || 5000
 
 // connect to mongoDB
-const connectDB = require('./config/db')
+const connectDB = require('./backend/config/db')
 connectDB()
 
 
@@ -16,8 +16,8 @@ app.use(cors())
 
 
 // routes
-app.use('/api/user', require('./routes/user.route'))
-app.use('/api/ticket', require('./routes/ticket.route'))
+app.use('/api/user', require('./backend/routes/user.route'))
+app.use('/api/ticket', require('./backend/routes/ticket.route'))
 
 
 // error handler
