@@ -1,12 +1,11 @@
-const express = require('express');
-const app = express();
+
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import './App.css';
 
 // import Login from './components/Login';
-import Tickets from './components/Tickets/Tickets';
+// import Tickets from './components/Tickets/Tickets';
 // import Entry from './pages/Entry'
 
 import Login from './components/login/Login';
