@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
+import axios from 'axios';
 import './App.css';
 
 // import Login from './components/Login';
@@ -15,25 +15,32 @@ import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
 
 
 
-function App() {
-  return (
-    <div className="App">
-      <Router>
-        <Route exact path='/'>
-          <Entry />
-        </Route>
-        <Route exact path='/login'>
-          <Login />
-        </Route>
+class App extends React.Component {
+  async componentDidMount() {
+    const result = await axios.get('/api/user')
+    console.log(result)
 
-        <Route exact path='/password-reset'>
-          <PasswordOtpFormPage />
-        </Route>
+  }
 
-      </Router>
-    </div>
+  render() {
+    return (
+      <div className="App" >
+        <Router>
+          <Route exact path='/'>
+            <Entry />
+          </Route>
+          <Route exact path='/login'>
+            <Login />
+          </Route>
 
-  );
+          <Route exact path='/password-reset'>
+            <PasswordOtpFormPage />
+          </Route>
+
+        </Router>
+      </div>
+
+    );
+  }
 }
-
 export default App;
