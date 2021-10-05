@@ -1,12 +1,16 @@
 const mongoose = require("mongoose")
-const config = require("config")
-const db = config.get("mongoURI")
+// const config = require("config")
+// const db = config.get("mongoURI")
+
+// use dotenv to fix security issue
+require('dotenv').config()
+const db = process.env.mongoURI
 
 // Create db connection function USING ASYNC AWAIT
 const connectDB = async () => {
     try {
         await mongoose.connect(db)
-        console.log('mongo db connected')
+        console.log('MongoDB Connected...')
     } catch (error) {
         console.error(error)
         process.exit(1)

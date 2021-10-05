@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector, Provider} from "react-redux";
-import { updatePassword} from "./passwordAction";
+import UpdatePassword from "./passwordAction";
 
 import{
     Container,
@@ -77,7 +77,7 @@ const UpdatePasswordFormComponent = () => {
             newPassword: password,
             email,
         };
-        dispatch(updatePassword(newPassObj));
+        dispatch(UpdatePassword(newPassObj));
     };
 
     return (

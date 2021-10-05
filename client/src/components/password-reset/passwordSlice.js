@@ -34,7 +34,7 @@ const passwordReset = createSlice({
     },
 }),
 
-{reducer, actions} = passwordReset
+{reducer, actions} = passwordReset;
 
 export const {
     otpReqPending,

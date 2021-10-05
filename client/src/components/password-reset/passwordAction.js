@@ -23,7 +23,7 @@ export const sendPasswordResetOtp = email => async dispatch => {
     }
 };
 
-export const updatePassword = frmData => async dispatch => {
+const UpdatePassword = frmData => async dispatch => {
     try {
         dispatch(otpReqPending());
 
@@ -38,3 +38,5 @@ export const updatePassword = frmData => async dispatch => {
         dispatch(otpReqFail(error.message));
     }
 };
+
+export default UpdatePassword;

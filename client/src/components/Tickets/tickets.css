@@ -1,0 +1,13 @@
+.headerContainer {
+    text-decoration: darkorange;
+}
+
+.searchBtn {
+    text-decoration: darkslategrey;
+}
+
+.container {
+    border: darkred;
+    border-radius: 60px;
+}
+
