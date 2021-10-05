@@ -1,13 +1,17 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors')
-require('dotenv').config()
+const path = require('path')
 
 const PORT = process.env.PORT || 5000
 
 // connect to mongoDB
 const connectDB = require('./backend/config/db')
 connectDB()
+
+
+app.use(express.static(path.join(__dirname, '/client/public')))
 
 
 // middle wares
