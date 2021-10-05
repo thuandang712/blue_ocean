@@ -13,11 +13,12 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 // get all user if log in authorized
-router.get('/', userAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         // check if user is authorized
-        // const result = await userSchema.find()
-        res.status(200).json({ msg: "get route" })
+        const result = await userSchema.find()
+        // res.status(200).json({ msg: "get route" })
+        res.status(200).json(result)
     } catch (error) {
         console.log(error)
         res.status(500).json(error.message)
