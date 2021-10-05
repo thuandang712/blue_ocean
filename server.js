@@ -11,7 +11,7 @@ const connectDB = require('./backend/config/db')
 connectDB()
 
 
-app.use(express.static(path.join(__dirname, '/client/public')))
+app.use(express.static(path.join(__dirname, '/client/build')))
 
 
 // middle wares
