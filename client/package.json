@@ -9,13 +9,18 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.4",
     "bootstrap": "^5.1.1",
-    "mdbreact": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mdbreact": "^4.6.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.13",
+    "pg": "^8.7.1",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.4",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "^1.1.5",
+    "react-scripts": "^4.0.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -41,6 +46,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+
   },
   "proxy": "http://localhost:5000"
+
+  }
+
 }

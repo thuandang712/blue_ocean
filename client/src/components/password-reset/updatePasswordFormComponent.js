@@ -1,193 +1,195 @@
-// import React, {useState, UseEffect} from "react";
-// import {useDispatch, useSelector} from "react-redux";
-// import { updatePassword} from "./passwordAction";
+import React, {useState} from "react";
+import {useDispatch, useSelector, Provider} from "react-redux";
+import UpdatePassword from "./passwordAction";
 
-// import{
-//     Container,
-//     Row,
-//     Col,
-//     Form,
-//     Button,
-//     Spinner,
-//     Alert,
-// } from "react-bootstrap";
+import{
+    Container,
+    Row,
+    Col,
+    Form,
+    Button,
+    Spinner,
+    Alert,
+} from "react-bootstrap";
 
-// const initialState = {
-//     pin: "",
-//     password: "sfsd#3Dsg",
-//     confirmPassword: "sfsd#3Dsg",
-// };
+const initialState = {
+    pin: "",
+    password: "sfsd#3Dsg",
+    confirmPassword: "sfsd#3Dsg",
+};
 
-// const passwordVerificationError = {
-//     isLenthy: false,
-//     hasUpper: false,
-//     hasLower: false,
-//     hasNumber: false,
-//     hasSpclChr: false,
-//     confirmPass: false,
-// }
+const passwordVerificationError = {
+    isLenthy: false,
+    hasUpper: false,
+    hasLower: false,
+    hasNumber: false,
+    hasSpclChr: false,
+    confirmPass: false,
+}
 
-// const updatePasswordForm = () => {
-//     const dispatch = useDispatch();
+const UpdatePasswordFormComponent = () => {
+    const dispatch = useDispatch();
 
-//     const [newPassword, setNewPassword] = useState(initialState);
-//     const [passwordError, setPasswordError] = useState(passwordVerificationError);
+    const [newPassword, setNewPassword] = useState(initialState);
+    const [passwordError, setPasswordError] = useState(passwordVerificationError);
 
-//     const {isLoading, status, message, email} = useSelector(
-//         state => state.password
-//     );
+    const {isLoading, status, message, email} = useSelector(
+        state => state.password
+    );
 
-//     const handleOnChange = e => {
-//         const {name, value} = e.target;
+    const handleOnChange = e => {
+        const {name, value} = e.target;
 
-//         setNewPassword({ ...newPassword, [name]: value});
+        setNewPassword({ ...newPassword, [name]: value});
 
-//         if(name === "password") {
-//             const isLenthy = value.length > 8;
-//             const hasUpper = /[A-Z]/.test(value);
-// 			const hasLower = /[a-z]/.test(value);
-// 			const hasNumber = /[0-9]/.test(value);
-// 			const hasSpclChr = /[@,#,$,%,&]/.test(value);
+        if(name === "password") {
+            const isLenthy = value.length > 8;
+            const hasUpper = /[A-Z]/.test(value);
+			const hasLower = /[a-z]/.test(value);
+			const hasNumber = /[0-9]/.test(value);
+			const hasSpclChr = /[@,#,$,%,&]/.test(value);
 
-//             setPasswordError({
-//                 ...passwordError,
-//                 isLenthy,
-//                 hasUpper,
-//                 hasLower,
-//                 hasNumber,
-//                 hasSpclChr,
-//             });
-//         }
+            setPasswordError({
+                ...passwordError,
+                isLenthy,
+                hasUpper,
+                hasLower,
+                hasNumber,
+                hasSpclChr,
+            });
+        }
 
-//         if (name === "confirmPass") {
-//             setPasswordError({
-//                 ...passwordError,
-//                 confirmPass: newPassword.password === value,
-//             });
-//         }
-//     };
+        if (name === "confirmPass") {
+            setPasswordError({
+                ...passwordError,
+                confirmPass: newPassword.password === value,
+            });
+        }
+    };
 
-//     const handleOnSubmit = e => {
-//         e.preventDefault()
+    const handleOnSubmit = e => {
+        e.preventDefault()
 
-//         const{pin, password} = newPassword;
+        const{pin, password} = newPassword;
 
-//         const newPassObj = {
-//             pin,
-//             newPassword: password,
-//             email,
-//         };
-//         dispatch(updatePassword(newPassObj));
-//     };
+        const newPassObj = {
+            pin,
+            newPassword: password,
+            email,
+        };
+        dispatch(UpdatePassword(newPassObj));
+    };
 
-//     return (
-//         <Container>
-//             <Row>
-//                 <Col>
-//                     <h1 className="text-info">Update Password</h1>
-//                 </Col>
-//             </Row>
-//             <hr />
-//             <Row>
-//                 <Col>
-//                     {message && (
-//                         <Alert variant={status === "success" ? "success" : "danger"}>
-//                             {message}
-//                         </Alert>
-//                     )}
-//                     {isLoading && <Spinner variant="primary" animation="border" />}
-//                 </Col>
-//             </Row>
+    return (
+        <Provider>
+        <Container>
+            <Row>
+                <Col>
+                    <h1 className="text-info">Update Password</h1>
+                </Col>
+            </Row>
+            <hr />
+            <Row>
+                <Col>
+                    {message && (
+                        <Alert variant={status === "success" ? "success" : "danger"}>
+                            {message}
+                        </Alert>
+                    )}
+                    {isLoading && <Spinner variant="primary" animation="border" />}
+                </Col>
+            </Row>
 
-//             <Row>
-//                 <Col>
-//                     <Form onSubmit={handleOnSubmit}>
-//                         <Form.Group>
-//                             <Form.Label>OTP</Form.Label>
-//                             <Form.Control
-//                                 type="number"
-//                                 name="pin"
-//                                 value={newPassword.pin}
-//                                 onChange={handleOnChange}
-//                                 placeholder="OTP"
-//                                 required
-//                                 />
-//                         </Form.Group>
+            <Row>
+                <Col>
+                    <Form onSubmit={handleOnSubmit}>
+                        <Form.Group>
+                            <Form.Label>OTP</Form.Label>
+                            <Form.Control
+                                type="number"
+                                name="pin"
+                                value={newPassword.pin}
+                                onChange={handleOnChange}
+                                placeholder="OTP"
+                                required
+                                />
+                        </Form.Group>
 
-//                         <Form.Group>
-//                             <Form.Label>Password</Form.Label>
-//                             <Form.Control
-//                                 type="password"
-//                                 name="password"
-//                                 value={newPassword.password}
-//                                 onChange={handleOnChange}
-//                                 placeholder="Password"
-//                                 required
-//                                 />
-//                         </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
+                                type="password"
+                                name="password"
+                                value={newPassword.password}
+                                onChange={handleOnChange}
+                                placeholder="Password"
+                                required
+                                />
+                        </Form.Group>
 
-//                         <Form.Group>
-//                             <Form.Label>Confirm Password</Form.Label>
-//                             <Form.Control
-//                                 type="password"
-//                                 name="confirmPass"
-//                                 value={newPassword.confirmPass}
-//                                 onChange={handleOnChange}
-//                                 placeholder="Confirm Password"
-//                                 required
-//                                 />
-//                         </Form.Group>
-//                         <Form.Text>
-//                             {!passwordError.confirmPass && (
-//                                 <div className="text-danger mb-3">Passwords do not match</div>
-//                             )}
-//                         </Form.Text>
+                        <Form.Group>
+                            <Form.Label>Confirm Password</Form.Label>
+                            <Form.Control
+                                type="password"
+                                name="confirmPass"
+                                value={newPassword.confirmPass}
+                                onChange={handleOnChange}
+                                placeholder="Confirm Password"
+                                required
+                                />
+                        </Form.Group>
+                        <Form.Text>
+                            {!passwordError.confirmPass && (
+                                <div className="text-danger mb-3">Passwords do not match</div>
+                            )}
+                        </Form.Text>
 
-//                         <ul className="mb-4">
-//                             <li
-//                                     className={
-//                                         passwordError.isLenthy ? "text-success" : "text-danger"
-//                                     }
-//                                     >
-//                                         Min 8 characters
-//                             </li>
-//                             <li
-//                                     className={
-//                                         passwordError.hasUpper ? "text-success" : "text-danger"
-//                                     }
-//                             >
-//                                 At least one upper case
-//                             </li>
-//                             <li
-//                                     className={
-//                                         passwordError.hasLower ? "text-success" : "text-danger"
-//                                     }
-//                             >
-//                                     At least one lower case
-//                             </li>
-//                             <li
+                        <ul className="mb-4">
+                            <li
+                                    className={
+                                        passwordError.isLenthy ? "text-success" : "text-danger"
+                                    }
+                                    >
+                                        Min 8 characters
+                            </li>
+                            <li
+                                    className={
+                                        passwordError.hasUpper ? "text-success" : "text-danger"
+                                    }
+                            >
+                                At least one upper case
+                            </li>
+                            <li
+                                    className={
+                                        passwordError.hasLower ? "text-success" : "text-danger"
+                                    }
+                            >
+                                    At least one lower case
+                            </li>
+                            <li
 
-//                                     className={
-//                                         passwordError.hasNumber ? "text-success" : "text-danger"
-//                                     }
-//                             >
-//                                     At least on special character: @ # $ % &{" "}
-//                             </li>
+                                    className={
+                                        passwordError.hasNumber ? "text-success" : "text-danger"
+                                    }
+                            >
+                                    At least on special character: @ # $ % &{" "}
+                            </li>
 
-//                         </ul>
+                        </ul>
 
-//                         <Button 
-//                                 variant="primary"
-//                                 type="submit"
-//                                 disabled={Object.values(passwordError).includes(false)}
-//                         >
-//                                 submit
-//                         </Button>
-//                     </Form>
-//                 </Col>
-//             </Row>
-//         </Container>
-//     );
-// };
+                        <Button 
+                                variant="primary"
+                                type="submit"
+                                disabled={Object.values(passwordError).includes(false)}
+                        >
+                                submit
+                        </Button>
+                    </Form>
+                </Col>
+            </Row>
+        </Container>
+        </Provider>
+    );
+};
 
-// export default updatePasswordForm;
+export default UpdatePasswordFormComponent;
