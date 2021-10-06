@@ -9,6 +9,7 @@ import './App.css';
 // import Entry from './pages/Entry'
 
 import Login from './components/login/Login';
+import Tickets from './components/Tickets/Tickets';
 import Entry from './pages/entry/Entry';
 
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
