@@ -13,17 +13,18 @@ import Tickets from './components/Tickets/Tickets';
 import Entry from './pages/entry/Entry';
 
 
-import PasswordOtpFormPage  from './pages/password-reset/PasswordOtpFormPage';
+import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
 import Registration from "./pages/registration/registrationPage";
 
 
 
 
 class App extends React.Component {
-  async componentDidMount() {
-    const result = await axios.get('/api/user')
-    console.log(result)
-
+  // for deployment test
+  // async componentDidMount() {
+  //   const result = await axios.get('/api/user')
+  //   console.log(result)
+  // }
 
   render() {
     return (
@@ -43,14 +44,15 @@ class App extends React.Component {
           <Route exact path='/tickets'>
             <Tickets />
           </Route>
-        <Route exact path = "/Registration">
-          <Registration />
-        </Route>
-      
+          <Route exact path="/Registration">
+            <Registration />
+          </Route>
+
         </Router>
       </div>
 
     );
   }
 }
+
 export default App;
