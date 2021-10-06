@@ -5,7 +5,7 @@ import axios from 'axios';
 import './App.css';
 
 // import Login from './components/Login';
-// import Tickets from './components/Tickets/Tickets';
+import Tickets from './components/Tickets/Tickets';
 // import Entry from './pages/Entry'
 
 import Login from './components/login/Login';
@@ -36,6 +36,10 @@ class App extends React.Component {
 
           <Route exact path='/password-reset'>
             <PasswordOtpFormPage />
+          </Route>
+
+          <Route exact path='/tickets'>
+            <Tickets />
           </Route>
 
         </Router>
