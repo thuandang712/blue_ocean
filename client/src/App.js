@@ -3,14 +3,15 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import './App.css';
 
-// import Login from './components/Login';
-import Tickets from './components/Tickets/Tickets';
-// import Entry from './pages/Entry'
+// // import Login from './components/Login';
+// import Tickets from './components/Tickets/Tickets';
+// // import Entry from './pages/Entry'
 
 import Login from './components/login/Login';
 import Entry from './pages/entry/Entry';
 
 import PasswordOtpFormPage  from './pages/password-reset/PasswordOtpFormPage';
+import Registration from "./pages/registration/registrationPage";
 
 
 
@@ -27,6 +28,9 @@ function App() {
 
         <Route exact path = '/password-reset'>
           <PasswordOtpFormPage /> 
+        </Route>
+        <Route exact path = "/Registration">
+          <Registration />
         </Route>
 
       </Router>
