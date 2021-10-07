@@ -4,7 +4,8 @@ const { getJWT, deleteJWT } = require('./redis')
 
 const userAuth = async (req, res, next) => {
     const { authorization } = req.headers
-    const userJWT = authorization.replace('Bearer ', '')
+    const userJWT = authorization.replace('Bearer ', '') // using postman
+
 
 
     // 1. verify if jwt is valid

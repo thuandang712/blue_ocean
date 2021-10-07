@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import axios from 'axios';
+// import axios from 'axios';
 import './App.css';
 
 // // import Login from './components/Login';
@@ -14,13 +14,11 @@ import Entry from './pages/entry/Entry';
 
 
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
-import Registration from "./pages/registration/registrationPage";
-
+import Tickets from './components/Tickets/Tickets';
 
 
 
 class App extends React.Component {
-  // for deployment test
   // async componentDidMount() {
   //   const result = await axios.get('/api/user')
   //   console.log(result)
@@ -36,7 +34,9 @@ class App extends React.Component {
           <Route exact path='/login'>
             <Login />
           </Route>
-
+          <Route exact path='/tickets'>
+            <Tickets />
+          </Route>
           <Route exact path='/password-reset'>
             <PasswordOtpFormPage />
           </Route>
