@@ -21,8 +21,11 @@ import Registration from "./pages/registration/registrationPage";
 
 class App extends React.Component {
   async componentDidMount() {
-    const result = await axios.get('/api/user')
-    console.log(result)
+  //   const result = await axios.get('/api/user')
+  //   console.log(result)
+
+  // };
+  };
 
 
   render() {
@@ -43,14 +46,13 @@ class App extends React.Component {
           <Route exact path='/tickets'>
             <Tickets />
           </Route>
-        <Route exact path = "/Registration">
+        <Route exact path = "/register">
           <Registration />
         </Route>
       
         </Router>
       </div>
-
     );
-  }
-}
+  };
+};
 export default App;
