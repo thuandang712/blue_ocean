@@ -5,7 +5,7 @@ import "./tickets.css"
 
 const Tickets = () => {
     return (
-        <container>
+        <div>
             <div>
                 <h1 className="text-info text-center">Tickets Page</h1>
                 <h2 className='text-center'>Admin Account: #123456</h2>
@@ -20,8 +20,8 @@ const Tickets = () => {
             <div> unassigned </div>
             <div className="createContainer"> create new tech</div>
             <div className="createContainer"> create new ticket</div>
-            </container>
-            
+        </div>
+
     )
 }
 
