@@ -38,12 +38,17 @@ const Login = () => {
             const obj = { email, password }
 
             const res = await userLogin(obj)
-            // if (isAuth.status === "error") {
-            //     return dispatch(loginFail(isAuth.message));
-            // }
+
+            console.log(res)
+
+            if (res.status === "error") {
+                return alert(res.message)   /// change to a error box later
+            }
+
             // setisAuth(true)
             // dispatch(getUserProfile());
             history.push("/tickets");
+
         } catch (error) {
             console.log(error)
             setisAuth(false)

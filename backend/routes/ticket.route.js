@@ -3,7 +3,7 @@ const { route } = require('./user.route')
 const router = express.Router()
 
 const { ticketSchema } = require('../schema/ticket.schema')
-const { userAuth } = require('../helpers/auth')
+const { userAuth } = require('../helpers/user.auth')
 
 router.get('/', userAuth, (req, res) => {
 
