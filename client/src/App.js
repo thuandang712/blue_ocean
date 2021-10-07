@@ -4,9 +4,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 // import axios from 'axios';
 import './App.css';
 
-// // import Login from './components/Login';
-// import Tickets from './components/Tickets/Tickets';
-// // import Entry from './pages/Entry'
 
 import Login from './components/login/Login';
 import Tickets from './components/Tickets/Tickets';
@@ -14,7 +11,6 @@ import Entry from './pages/entry/Entry';
 
 
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
-import Tickets from './components/Tickets/Tickets';
 
 
 
@@ -41,11 +37,8 @@ class App extends React.Component {
             <PasswordOtpFormPage />
           </Route>
 
-          <Route exact path='/tickets'>
-            <Tickets />
-          </Route>
-          <Route exact path="/Registration">
-            <Registration />
+          <Route exact path="/register">
+            {/* <Registration /> */}
           </Route>
 
         </Router>
