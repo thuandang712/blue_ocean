@@ -22,13 +22,8 @@
 //     const handleOnResetSubmit = e => {
 //         e.preventDefault();
 
-<<<<<<< HEAD
-        dispatch(sendPasswordResetOtp(email));
-    };
-=======
 //         dispatch(sendPasswordReset(email));
 //     };
->>>>>>> master
 
 //     const handleOnChange = e => {
 //         const {value} = e.target
