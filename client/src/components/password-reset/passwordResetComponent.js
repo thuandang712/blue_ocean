@@ -1,8 +1,8 @@
-import React, {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {sendPasswordResetOtp} from "./passwordAction";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { sendPasswordResetOtp } from "./passwordAction";
 
-import{
+import {
     Row,
     Col,
     Form,
@@ -16,7 +16,7 @@ export const ResetPassword = () => {
 
     const [email, setEmail] = useState("");
 
-    const {isLoading, status, message} = useSelector(state => state.password);
+    const { isLoading, status, message } = useSelector(state => state.password);
 
     const handleOnResetSubmit = e => {
         e.preventDefault();
@@ -25,7 +25,7 @@ export const ResetPassword = () => {
     };
 
     const handleOnChange = e => {
-        const {value} = e.target
+        const { value } = e.target
         setEmail(value);
     };
 
@@ -48,12 +48,12 @@ export const ResetPassword = () => {
                         <Form.Group>
                             <Form.Label>Email Address</Form.Label>
                             <Form.Control
-                                    type="email"
-                                    name="email"
-                                    value={email}
-                                    onChange={handleOnChange}
-                                    placeholder="Enter Email"
-                                    required
+                                type="email"
+                                name="email"
+                                value={email}
+                                onChange={handleOnChange}
+                                placeholder="Enter Email"
+                                required
                             />
                         </Form.Group>
 
@@ -64,4 +64,4 @@ export const ResetPassword = () => {
             </Row>
         </container>
     );
-                    };         
+};
