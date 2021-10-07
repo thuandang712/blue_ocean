@@ -15,10 +15,13 @@ import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
 
 
 class App extends React.Component {
-  // async componentDidMount() {
-  //   const result = await axios.get('/api/user')
-  //   console.log(result)
-  // }
+  async componentDidMount() {
+    //   const result = await axios.get('/api/user')
+    //   console.log(result)
+
+    // };
+  };
+
 
   render() {
     return (
@@ -37,15 +40,14 @@ class App extends React.Component {
             <PasswordOtpFormPage />
           </Route>
 
+
           <Route exact path="/register">
-            {/* <Registration /> */}
+            <Registration />
           </Route>
 
         </Router>
       </div>
-
     );
-  }
-}
-
+  };
+};
 export default App;
