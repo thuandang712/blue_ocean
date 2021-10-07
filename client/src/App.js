@@ -11,6 +11,7 @@ import Entry from './pages/entry/Entry';
 import Registration from "./pages/registration/registrationPage";
 
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
+import { DefaultLayout } from './layout/DefaultLayout';
 
 
 
@@ -44,6 +45,11 @@ class App extends React.Component {
           <Route exact path="/register">
             <Registration />
           </Route>
+
+          <Route exact path='/defaultlayout'>
+            <DefaultLayout />
+          </Route>
+          
 
         </Router>
       </div>
