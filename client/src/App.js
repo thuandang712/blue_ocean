@@ -8,7 +8,7 @@ import './App.css';
 import Login from './components/login/Login';
 import Tickets from './components/Tickets/Tickets';
 import Entry from './pages/entry/Entry';
-
+import Registration from "./pages/registration/registrationPage";
 
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
 
