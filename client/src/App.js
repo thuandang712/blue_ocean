@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import axios from 'axios';
 import './App.css';
 
@@ -27,24 +27,26 @@ class App extends React.Component {
     return (
       <div className="App" >
         <Router>
-          <Route exact path='/'>
-            <Entry />
-          </Route>
-          <Route exact path='/login'>
-            <Login />
-          </Route>
-          <Route exact path='/tickets'>
-            <Tickets />
-          </Route>
-          <Route exact path='/password-reset'>
-            <PasswordOtpFormPage />
-          </Route>
+          <Switch>
+            <Route exact path='/'>
+              <Entry />
+            </Route>
+            <Route exact path='/login'>
+              <Login />
+            </Route>
+            <Route exact path='/tickets'>
+              <Tickets />
+            </Route>
+            <Route exact path='/password-reset'>
+              <PasswordOtpFormPage />
+            </Route>
 
 
-          <Route exact path="/register">
-            <Registration />
-          </Route>
+            <Route exact path="/register">
+              <Registration />
+            </Route>
 
+          </Switch>
         </Router>
       </div>
     );
