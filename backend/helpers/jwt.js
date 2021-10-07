@@ -3,10 +3,10 @@ const { setJWT, getJWT } = require('./redis')
 const { userSchema } = require('../schema/user.schema')
 
 const createAccessJWT = async (email, _id) => {
-    const accessJWT = jwt.sign(
+    const accessJWT = await jwt.sign(
         { email },
         process.env.JWT_ACCESS_KEY,
-        { expiresIn: '15m' }
+        { expiresIn: '30m' } // change back to 15m after debugging
     );
 
     setJWT(accessJWT, _id)
@@ -38,7 +38,17 @@ const createRefreshJWT = async (email, _id) => {
     return refreshJWT
 }
 
+const verifyAccessJWT = userJWT => {
+    try {
+        return Promise.resolve(jwt.verify(userJWT, process.env.JWT_ACCESS_KEY));
+    } catch (error) {
+        return Promise.resolve(error)
+    }
+}
+
+
 module.exports = {
     createAccessJWT,
-    createRefreshJWT
+    createRefreshJWT,
+    verifyAccessJWT
 }

@@ -5,23 +5,34 @@ const { userSchema } = require('../schema/user.schema')
 
 // jwt helper
 const { createAccessJWT, createRefreshJWT } = require('../helpers/jwt')
+const { deleteJWT } = require('../helpers/redis')
+
+const { userAuth } = require('../helpers/auth')
 
 // bcrypt
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-
-router.get('/', async (req, res) => {
+// get all user if log in authorized
+router.get('/', userAuth, async (req, res) => {
     try {
-        const result = await userSchema.find()
-        res.status(200).json(result)
+        // 1.2. check if user is authorized using middleware userAuth
+        // 3. extract user id
+        const _id = req.userID
+        const userProfile = await userSchema.findOne({ _id: _id })
+        // 4. get user profile based on user id 
+        res.status(200).json({ user: userProfile })
+
+        // all user info will be available in this private route?
+        // const result = await userSchema.find()
+        // res.status(200).json(result)
     } catch (error) {
         console.log(error)
         res.status(500).json(error.message)
     }
 })
 
-
+// create a user
 router.post('/', async (req, res) => {
     const { first_name, last_name, phone_number, email, password } = req.body
 
@@ -77,6 +88,7 @@ router.post('/login', async (req, res) => {
         const refreshJWT = await createRefreshJWT(user.email, `${user._id}`) // expecting email and id
 
         res.status(200).json({
+            status: "success",
             message: "Login successfully",
             accessJWT,
             refreshJWT
@@ -90,6 +102,34 @@ router.post('/login', async (req, res) => {
 
 })
 
+
+// user logout route, invalidate jwt
+router.delete('/logout', userAuth, async (req, res) => {
+    try {
+        const { authorization } = req.headers
+        const userJWT = authorization.replace('Bearer ', '')
+        const _id = req.userID
+        deleteJWT(userJWT)
+
+        // delete refresh jwt from mongo db
+        await userSchema.findOneAndUpdate(
+            { _id },
+            {
+                $set: {
+                    "refreshJWT.token": '',
+                    "refreshJWT.createdAt": Date.now()
+                }
+            },
+            { new: true }
+        )
+
+        res.json({ message: "Log out successfully" })
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json(error.message)
+    }
+})
 
 
 module.exports = router

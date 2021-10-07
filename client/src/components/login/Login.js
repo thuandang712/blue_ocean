@@ -1,10 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+import { useHistory, useLocation } from "react-router-dom";
+
 import './login.style.css'
 
 const Login = () => {
+    const history = useHistory();
+    let location = useLocation();
+    let { from } = location.state || { from: { pathname: "/login" } };
+
+
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [isAuth, setisAuth] = useState(false)
+
+
+    useEffect(() => {
+        sessionStorage.getItem("accessJWT") && history.replace(from);
+    }, [history, isAuth]);
+
 
     const handleOnChange = e => {
         const { name, value } = e.target
@@ -12,25 +28,60 @@ const Login = () => {
         if (name === 'password') setPassword(value)
     }
 
-    const handleOnSubmit = e => {
+    const handleOnSubmit = async e => {
         e.preventDefault()
 
-        console.log(email)
-        console.log(password)
 
         // TODO call api to check if email and pw matching the db
+        try {
+            // const isAuth = await userLogin({ email, password });
+            const obj = { email, password }
+
+            const res = await userLogin(obj)
+            // if (isAuth.status === "error") {
+            //     return dispatch(loginFail(isAuth.message));
+            // }
+            // setisAuth(true)
+            // dispatch(getUserProfile());
+            history.push("/tickets");
+        } catch (error) {
+            console.log(error)
+            setisAuth(false)
+        }
+
+
         //
-        setEmail('')
-        setPassword('')
+        // setEmail('')
+        // setPassword('')
     }
 
+    const userLogin = async obj => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const res = await axios.post('http://localhost:5000/api/user/login', obj);
+
+                resolve(res.data);
+
+                if (res.data.status === "success") {
+                    sessionStorage.setItem("accessJWT", res.data.accessJWT);
+                    localStorage.setItem(
+                        "crmSite",
+                        JSON.stringify({ refreshJWT: res.data.refreshJWT })
+                    );
+                }
+            } catch (error) {
+                reject(error);
+            }
+        });
+
+    }
 
     return (
         <Container>
             <Row className="mx-auto w-50">
                 <Col>
                     <h1 className="text-info text-center mt-5">Admin Login</h1>
-                    <Form autoComplete="off" onSubmit={handleOnSubmit}>
+                    <Form autoComplete="on" onSubmit={handleOnSubmit}>
                         <Form.Group className="mb-3">
                             <Form.Label>Email Address</Form.Label>
                             <Form.Control className=''
@@ -70,7 +121,7 @@ const Login = () => {
 
             <Row className="mx-auto w-50 py-3"> {/* padding-top, padding-bottom 1 rem */}
                 <Col>
-                    Are you new here? <a href="/register">Register Now</a>
+                    Don't have an account yet? <a href="/register">Register Now</a>
                 </Col>
             </Row>
 
@@ -83,4 +134,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Login;

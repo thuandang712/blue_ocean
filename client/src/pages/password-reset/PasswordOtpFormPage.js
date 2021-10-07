@@ -1,24 +1,26 @@
-// import React, {useState} from "react";
-// import { useSelector } from "react-redux";
+import React, {useState} from "react";
+import { useSelector } from "react-redux";
 
-// import { Jumbotron } from "react-bootstrap";
-// import { ResetPassword } from "../../components/password-reset/passwordResetComponent";
-// import updatePasswordForm from "../../components/password-reset/updatePasswordFormComponent";
+import { Jumbotron } from "react-bootstrap";
+import { ResetPassword } from "../../components/password-reset/passwordResetComponent";
+import UpdatePasswordFormComponent from "../../components/password-reset/updatePasswordFormComponent";
 
-import "./PasswordOtpFormStyle.css";
-import { updatePassword } from "../../components/password-reset/passwordAction";
+import "./PasswordOtpForm.style.css";
 
-// export const PasswordOtpForm = () => {
-//     const {showUpdatePassForm} = useSelector(state => state.password);
 
-//     return (
-//         <div className="entry-page bg-info">
-//             <Jumbotron className="form-box">
-//                 {showUpdatePassForm ? <updatePasswordForm /> : <ResetPassword />}
-//                 <div className="text-center">
-//                     <a href="/">Login Now</a>
-//                 </div>
-//             </Jumbotron>
-//         </div>
-//     );
-// };
+const PasswordOtpForm = () => {
+    const {showUpdatePassForm} = useSelector(state => state.password);
+
+    return (
+        <div className="entry-page bg-info">
+            <Jumbotron className="form-box">
+                {showUpdatePassForm ? <UpdatePasswordFormComponent /> : <ResetPassword />}
+                <div className="text-center">
+                    <a href="/">Login Now</a>
+                </div>
+            </Jumbotron>
+        </div>
+    );
+};
+
+export default PasswordOtpForm;

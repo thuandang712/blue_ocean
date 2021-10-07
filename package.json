@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build"
   },
   "repository": {
     "type": "git",
@@ -28,5 +31,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.8",
     "redis": "^3.1.2"
+  },
+  "engines": {
+    "node": "14.17.1"
   }
 }
