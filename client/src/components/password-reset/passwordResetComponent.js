@@ -21,8 +21,13 @@ export const ResetPassword = () => {
     const handleOnResetSubmit = e => {
         e.preventDefault();
 
+<<<<<<< HEAD
+//         dispatch(sendPasswordReset(email));
+//     };
+=======
         dispatch(sendPasswordResetOtp(email));
     };
+>>>>>>> master
 
     const handleOnChange = e => {
         const {value} = e.target
