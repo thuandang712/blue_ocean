@@ -1,13 +1,24 @@
 import React from 'react'
 import { Header } from './package/Header'
 import { Footer } from './package/Footer'
+import { TabContent } from 'react-bootstrap'
 
 export const DefaultLayout = () => {
     return (
-        <div>
+        <div className='default-layout'>
+            <header className="header">
             <Header />
+            </header>
+            
+            <content>
             Main Page
-            <Footer />
+            </content>
+            
+
+            <footer className="footer">
+                <Footer />
+            </footer>
+            
         </div>
     )
 }

@@ -23,12 +23,12 @@ app.use(cors())
 app.use('/api/user', require('./backend/routes/user.route'))
 app.use('/api/ticket', require('./backend/routes/ticket.route'))
 
-
+// Deployment
 // Step 1:
 app.use(express.static(path.resolve(__dirname, "./client/build")));
 // Step 2:
-app.get("*", function (request, response) {
-    response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 
 // error handler

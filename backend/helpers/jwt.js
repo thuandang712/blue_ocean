@@ -38,8 +38,12 @@ const createRefreshJWT = async (email, _id) => {
     return refreshJWT
 }
 
-const verifyAccessJWT = async userJWT => {
-    return await jwt.verify(userJWT, process.env.JWT_ACCESS_KEY)
+const verifyAccessJWT = userJWT => {
+    try {
+        return Promise.resolve(jwt.verify(userJWT, process.env.JWT_ACCESS_KEY));
+    } catch (error) {
+        return Promise.resolve(error)
+    }
 }
 
 
