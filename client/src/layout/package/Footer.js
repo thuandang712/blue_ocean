@@ -7,6 +7,9 @@ export const Footer = () => {
             </div>
         )
     }
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> 59dd05d01d1510ea1e47162fbe5061ced5b0b042

@@ -16,5 +16,9 @@ export const Header = () => {
         </Nav>
     </Navbar.Collapse>
     </Navbar>
+<<<<<<< HEAD
+}
+=======
 }
 
+>>>>>>> 59dd05d01d1510ea1e47162fbe5061ced5b0b042
