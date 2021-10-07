@@ -4,9 +4,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 // import axios from 'axios';
 import './App.css';
 
-// // import Login from './components/Login';
-// import Tickets from './components/Tickets/Tickets';
-// // import Entry from './pages/Entry'
 
 import Login from './components/login/Login';
 import Tickets from './components/Tickets/Tickets';
@@ -14,15 +11,29 @@ import Entry from './pages/entry/Entry';
 
 
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
-import Tickets from './components/Tickets/Tickets';
-
-
 
 class App extends React.Component {
-  // async componentDidMount() {
-  //   const result = await axios.get('/api/user')
-  //   console.log(result)
-  // }
+  state = {
+    loading: false,
+    techs: [],
+    deleteTicket: [],
+    singleTech: null
+  }
+
+
+  async componentDidMount () {
+    this.setState({loading: true})
+    const res = await axios.get("https://blue-ocean-ticketing-system.herokuapp.com/api/users")
+    this.setState({loading: false, techs: res.data})
+
+
+    const getTech = async (id) => {
+    this.setState({loading: true})
+    const res = await axios.get(`https://blue-ocean-ticketing-system.herokuapp.com/api/users/${id}`)
+    this.setState({singleTech: res.data})
+    this.setState({loading: false})
+}
+
 
   render() {
     return (
@@ -41,11 +52,8 @@ class App extends React.Component {
             <PasswordOtpFormPage />
           </Route>
 
-          <Route exact path='/tickets'>
-            <Tickets />
-          </Route>
-          <Route exact path="/Registration">
-            <Registration />
+          <Route exact path="/register">
+            {/* <Registration /> */}
           </Route>
 
         </Router>
@@ -53,6 +61,6 @@ class App extends React.Component {
 
     );
   }
-}
+
 
 export default App;

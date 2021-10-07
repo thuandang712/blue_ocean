@@ -15,12 +15,12 @@ All the user API router follows `/api/user/`
 
 | #   | Routers                   | HTTP   | Progress | Is Private | Description                                      |
 | --- | ------------------------- | ------ | -------- | ---------- | ------------------------------------------------ |
-| 1   | `/api/user`                | GET    | DONE | Yes        | Get user Info                                    |
-| 2   | `/api/user`                | POST   | WORKING | No         | Create a user                                    |
-| 3   | `/api/user/login`          | POST   | DONE | No         | Verify user Authentication and return JWT        |
-| 4   | `/api/user/reset-password` | POST   | Not started | No         | Verify email and email pin to reset the password |
-| 5   | `/api/user/reset-password` | PATCH  | Not started | No         | Replace with new password                        |
-| 6   | `/api/user/logout`         | DELETE | DONE | Yes        | Delete user accessJWT                            |
+| 1   | `/api/user`                | GET    | DONE    | Yes        | Get user Info                                    |
+| 2   | `/api/user`                | POST   | DONE    | No         | Create a user                                    |
+| 3   | `/api/user/login`          | POST   | DONE    | No         | Verify user Authentication and return JWT        |
+| 4   | `/api/user/reset-password` | POST   | Not started | No     | Verify email and email pin to reset the password |
+| 5   | `/api/user/reset-password` | PATCH  | Not started | No     | Replace with new password                        |
+| 6   | `/api/user/logout`         | DELETE | DONE    | Yes        | Delete user accessJWT                            |
 
 ### Ticket API Resources
 

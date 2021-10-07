@@ -5,7 +5,7 @@ class addTech extends React.Component {
             firstName: '',
             lastName: '',
             phoneNumber: '',
-            email: ''
+            email: '',
         }
 
     render() {
