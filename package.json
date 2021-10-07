@@ -1,15 +1,13 @@
 {
-  "dependencies": {
-    "dotenv": "^10.0.0"
-  },
-  "scripts": {
-    "start": "node server.js"
-  },
   "name": "blue_ocean",
-  "description": "",
   "version": "1.0.0",
-  "main": "server.js",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
   "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thuandang712/blue_ocean.git"
