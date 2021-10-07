@@ -1,7 +1,7 @@
 import React from 'react'
 import { Header } from './package/Header'
 import { Footer } from './package/Footer'
-<<<<<<< HEAD
+
 
 export const DefaultLayout = () => {
     return (
@@ -12,7 +12,7 @@ export const DefaultLayout = () => {
         </div>
     )
 }
-=======
+
 import { TabContent } from 'react-bootstrap'
 
 export const DefaultLayout = () => {
