@@ -21,9 +21,9 @@ export const ResetPassword = () => {
     const handleOnResetSubmit = e => {
         e.preventDefault();
 
-        //         dispatch(sendPasswordReset(email));
-        //     };
-    }
+        dispatch(sendPasswordResetOtp(email));
+    };
+
     const handleOnChange = e => {
         const { value } = e.target
         setEmail(value);

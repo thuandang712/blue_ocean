@@ -9,18 +9,19 @@ import Login from './components/login/Login';
 import Tickets from './components/Tickets/Tickets';
 import Entry from './pages/entry/Entry';
 import Registration from "./pages/registration/registrationPage";
-
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
+import DefaultLayout from './layout/DefaultLayout';
+import Dashboard from './pages/dashboard/Dashboard'
 
 
 
 class App extends React.Component {
-  async componentDidMount() {
-    //   const result = await axios.get('/api/user')
-    //   console.log(result)
 
-    // };
-  };
+  // async componentDidMount() {
+  //   const result = await axios.get('/api/user')
+  //   console.log(result)
+  // };
+
 
 
   render() {
@@ -41,10 +42,17 @@ class App extends React.Component {
               <PasswordOtpFormPage />
             </Route>
 
+            <Route exact path="/dashboard">
+              <DefaultLayout>
+                <Dashboard />
+              </DefaultLayout>
+            </Route>
 
             <Route exact path="/register">
               <Registration />
             </Route>
+
+
 
           </Switch>
         </Router>
