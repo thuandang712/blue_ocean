@@ -4,14 +4,15 @@ const router = express.Router()
 
 const { ticketSchema } = require('../schema/ticket.schema')
 const { userAuth } = require('../helpers/user.auth')
+const { adminAuth } = require('../helpers/admin.auth')
 
-router.get('/', userAuth, (req, res) => {
+router.get('/', adminAuth, (req, res) => {
 
     res.json({ message: "Ticket get route works!!!" })
 })
 
 
-router.post('/', userAuth, async (req, res) => {
+router.post('/', adminAuth, async (req, res) => {
     try {
         const { subject, sender, message } = req.body
         const userID = req.userID

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation, Link } from "react-router-dom";
 
 import './login.style.css'
 
@@ -47,7 +47,7 @@ const Login = () => {
 
             // setisAuth(true)
             // dispatch(getUserProfile());
-            history.push("/tickets");
+            history.push("/dashboard");
 
         } catch (error) {
             console.log(error)
@@ -132,7 +132,7 @@ const Login = () => {
 
             <Row className="mx-auto w-50">
                 <Col>
-                    <a href="/">Back to home page</a>
+                    <Link to="/">Back to home page</Link>
                 </Col >
             </Row >
         </Container >

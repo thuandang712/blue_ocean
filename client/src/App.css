@@ -6,6 +6,22 @@
 
 .default-layout{
   display: grid;
-  grid-template-rows: 100px auto 4rem;
+  grid-template-rows: 150px auto 3rem;
   grid-template-areas: 'header' 'main' 'footer';
+}
+
+.header {
+  grid-area: header;
+}
+
+.main {
+  grid-area: main;
+  min-height: 80vh;
+}
+
+.footer {
+  grid-area: footer;
+  background: black;
+  color: #fff;
+  padding: 1rem
 }

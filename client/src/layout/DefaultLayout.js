@@ -1,37 +1,25 @@
 import React from 'react'
-import { Header } from './package/Header'
-import { Footer } from './package/Footer'
+import Header from './Header'
+import Footer from './Footer'
 
-
-export const DefaultLayout = () => {
-    return (
-        <div>
-            <Header />
-            Main Page
-            <Footer />
-        </div>
-    )
-}
-
-import { TabContent } from 'react-bootstrap'
-
-export const DefaultLayout = () => {
+const DefaultLayout = ({ children }) => {
     return (
         <div className='default-layout'>
             <header className="header">
-            <Header />
+                <Header />
             </header>
-            
-            <content>
-            Main Page
-            </content>
-            
+
+            <main className='main'>
+                {children}
+            </main>
+
 
             <footer className="footer">
                 <Footer />
             </footer>
-            
+
         </div>
     )
 }
 
+export default DefaultLayout
