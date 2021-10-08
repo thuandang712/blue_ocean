@@ -13,16 +13,28 @@ import Registration from "./pages/registration/registrationPage";
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
 import { DefaultLayout } from './layout/DefaultLayout';
 
-
-
 class App extends React.Component {
-  async componentDidMount() {
-    //   const result = await axios.get('/api/user')
-    //   console.log(result)
+  state = {
+    loading: false,
+    techs: [],
+    deleteTicket: [],
+    singleTech: null
+  }
 
-    // };
-  };
 
+  // async componentDidMount() {
+  //   this.setState({ loading: true })
+  //   const res = await axios.get("https://blue-ocean-ticketing-system.herokuapp.com/api/users")
+  //   this.setState({ loading: false, techs: res.data })
+
+
+  //   const getTech = async (id) => {
+  //     this.setState({ loading: true })
+  //     const res = await axios.get(`https://blue-ocean-ticketing-system.herokuapp.com/api/users/${id}`)
+  //     this.setState({ singleTech: res.data })
+  //     this.setState({ loading: false })
+  //   }
+  // }
 
   render() {
     return (
@@ -49,11 +61,12 @@ class App extends React.Component {
           <Route exact path='/defaultlayout'>
             <DefaultLayout />
           </Route>
-          
+
 
         </Router>
       </div>
     );
-  };
-};
+  }
+}
+
 export default App;
