@@ -15,14 +15,27 @@ import Dashboard from './pages/dashboard/Dashboard'
 
 
 
-class App extends React.Component {
 
+class App extends React.Component {
+  state = {
+    loading: false,
+    techs: [],
+    deleteTicket: [],
+    singleTech: null
+  }
   // async componentDidMount() {
   //   const result = await axios.get('/api/user')
   //   console.log(result)
   // };
 
 
+  //   const getTech = async (id) => {
+  //     this.setState({ loading: true })
+  //     const res = await axios.get(`https://blue-ocean-ticketing-system.herokuapp.com/api/users/${id}`)
+  //     this.setState({ singleTech: res.data })
+  //     this.setState({ loading: false })
+  //   }
+  // }
 
   render() {
     return (
@@ -58,6 +71,7 @@ class App extends React.Component {
         </Router>
       </div>
     );
-  };
-};
+  }
+}
+
 export default App;
