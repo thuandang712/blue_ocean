@@ -11,7 +11,11 @@ import Entry from './pages/entry/Entry';
 import Registration from "./pages/registration/registrationPage";
 
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
+<<<<<<< HEAD
+// import { DefaultLayout } from './layout/DefaultLayout';
+=======
 import { DefaultLayout } from './layout/DefaultLayout';
+>>>>>>> 59dd05d01d1510ea1e47162fbe5061ced5b0b042
 
 class App extends React.Component {
   state = {
@@ -52,7 +56,9 @@ class App extends React.Component {
           <Route exact path='/password-reset'>
             <PasswordOtpFormPage />
           </Route>
-
+          <Route exact path="/defaultlayout">
+            <DefaultLayout />
+          </Route>
 
           <Route exact path="/register">
             <Registration />
