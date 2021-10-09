@@ -27,33 +27,35 @@ All the user API router follows `/api/admin/`
 
 All the tech API router follows `/api/tech/`
 
-| #   | Routers                     | HTTP   | Progress | Is Private | Description                                      |
-| --- | --------------------------- | ------ | -------- | ---------- | ------------------------------------------------ |
-| 1   | `/api/tech`                 | GET    | DONE     | Yes        | Get all tech Info                                |
-| 2   | `/api/tech/:id`             | GET    | DONE     | Yes        | Get a tech details                               |
-| 3   | `/api/tech`                 | POST   | DONE     | Yes        | Create a tech                                    |
-| 4   | `/api/tech/:id`             | PATCH  | DONE     | Yes        | Update tech details                              |
-| 5   | `/api/tech/status/:id`      | PATCH  | DONE     | Yes        | Update tech status                               |
-| 6   | `/api/tech/:id`             | DELETE | DONE     | Yes        | Delete a tech                                    |
+| #   | Routers                             | HTTP   | Progress | Is Private | Description                                      |
+| --- | ----------------------------------- | ------ | -------- | ---------- | ------------------------------------------------ |
+| 1   | `/api/tech`                         | GET    | DONE     | Yes        | Get all tech Info                                |
+| 2   | `/api/tech/:id`                     | GET    | DONE     | Yes        | Get a tech details                               |
+| 3   | `/api/tech`                         | POST   | DONE     | Yes        | Create a tech                                    |
+| 4   | `/api/tech/:id`                     | PATCH  | DONE     | Yes        | Update tech details                              |
+| 5   | `/api/tech/:id/status/unavailable`  | PATCH  | DONE     | Yes        | Update tech status                               |
+| 6   | `/api/tech/:id`                     | DELETE | DONE     | Yes        | Delete a tech                                    |
 
 
 ### Ticket API Resources
 
 All the user API router follows `/api/ticket/`
 
-| #   | Routers                     | HTTP   | Progress    | Is Private | Description                                      |
-| --- | --------------------------- | ------ | ----------- | ---------- | ------------------------------------------------ |
-| 1   | `/api/ticket`               | GET    | WORKING     | Yes        | Get all ticket Info                              |
-| 2   | `/api/ticket/:id`           | GET    | WORKING     | Yes        | Get a ticket details                             |
-| 3   | `/api/ticket`               | POST   | WORKING     | Yes        | Create a ticket                                  |
-| 4   | `/api/ticket/:id`           | PATCH  | WORKING     | Yes        | Update ticket details                            |
-| 5   | `/api/ticket/:id`           | DELETE | WORKING     | Yes        | Delete a ticket                                  |
+| #   | Routers                             | HTTP   | Progress | Is Private | Description                                      |
+| --- | ----------------------------------- | ------ | -------- | ---------- | ------------------------------------------------ |
+| 1   | `/api/ticket`                       | GET    | DONE     | Yes        | Get all ticket Info                              |
+| 2   | `/api/ticket/:id`                   | GET    | DONE     | Yes        | Get a ticket details                             |
+| 3   | `/api/ticket`                       | POST   | DONE     | Yes        | Create a ticket                                  |
+| 4   | `/api/ticket/:id/`                  | PATCH  | DONE     | Yes        | Update ticket details                            |
+| 5   | `/api/ticket/:id/status/working`    | PATCH  | DONE     | Yes        | Update ticket status to working                  |
+| 6   | `/api/ticket/:id/status/done`       | PATCH  | DONE     | Yes        | Update ticket status to done                     |
+| 7   | `/api/ticket/:id`                   | DELETE | DONE     | Yes        | Delete a ticket                                  |
 
 
 ### Tokens API Resources
 
-All the user API router follows `/api/tokens`
+<!-- All the user API router follows `/api/tokens`
 
 | #   | Routers      | HTTP | Progress | Is Private | Description            |
 | --- | ------------ | ----- | -------- | ---------- | ---------------------- |
-| 1   | `/api/tokens` | GET   | Not started     | No         | Get a fresh access JWT |
+| 1   | `/api/tokens` | GET   | Not started     | No         | Get a fresh access JWT | -->
