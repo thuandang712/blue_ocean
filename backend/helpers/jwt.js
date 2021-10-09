@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { setJWT, getJWT } = require('./redis')
-const { userSchema } = require('../schema/user.schema')
+const { adminSchema } = require('../schema/admin.schema')
 
 const createAccessJWT = async (email, _id) => {
     const accessJWT = await jwt.sign(
@@ -24,7 +24,7 @@ const createRefreshJWT = async (email, _id) => {
     );
 
     // store refresh JWT in mongoDB
-    await userSchema.findOneAndUpdate(
+    await adminSchema.findOneAndUpdate(
         { _id },
         {
             $set: {
@@ -38,9 +38,9 @@ const createRefreshJWT = async (email, _id) => {
     return refreshJWT
 }
 
-const verifyAccessJWT = userJWT => {
+const verifyAccessJWT = adminJWT => {
     try {
-        return Promise.resolve(jwt.verify(userJWT, process.env.JWT_ACCESS_KEY));
+        return Promise.resolve(jwt.verify(adminJWT, process.env.JWT_ACCESS_KEY));
     } catch (error) {
         return Promise.resolve(error)
     }

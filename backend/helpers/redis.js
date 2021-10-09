@@ -15,20 +15,6 @@ const setJWT = (key, value) => {
 
 }
 
-// const getJWT = async key => {
-//     try {
-//         await client.get(key, (err, value) => {
-//             if (err) {
-//                 return err
-//             }
-//             return value
-//         });
-//     } catch (error) {
-//         console.log(error)
-//     }
-
-// }
-
 const getJWT = key => {
     return new Promise((resolve, reject) => {
         try {

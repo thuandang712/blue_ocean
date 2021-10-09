@@ -5,10 +5,10 @@ const Dashboard = () => {
     return (
         <Container>
             <ListGroup variant="flush" className='mt-5'>
-                <ListGroup.Item variant="primary">Total Tech: </ListGroup.Item>
-                <ListGroup.Item variant="secondary">Total Tickets: </ListGroup.Item>
-                <ListGroup.Item variant="warning">Pending Tickets: </ListGroup.Item>
-                <ListGroup.Item variant="info">Tech Available: </ListGroup.Item>
+                <ListGroup.Item >Total Tech: </ListGroup.Item>
+                <ListGroup.Item >Total Tickets: </ListGroup.Item>
+                <ListGroup.Item >Pending Tickets: </ListGroup.Item>
+                <ListGroup.Item >Tech Available: </ListGroup.Item>
             </ListGroup>
         </Container>
     )
