@@ -1,59 +1,51 @@
 const express = require('express')
 const router = express.Router()
 
-const { userSchema } = require('../schema/user.schema')
+const { adminSchema } = require('../schema/admin.schema')
 
 // jwt helper
 const { createAccessJWT, createRefreshJWT } = require('../helpers/jwt')
 const { deleteJWT } = require('../helpers/redis')
 
-// const { userAuth } = require('../helpers/user.auth')
+// bcrypt
+const { hashPassword, comparePassword } = require('../helpers/bcrypt')
+
+// admin authorization
 const { adminAuth } = require('../helpers/admin.auth')
 
-// bcrypt
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+
 
 // get all user if log in authorized
 router.get('/', adminAuth, async (req, res) => {
     try {
-        // 1.2. check if user is authorized using middleware userAuth
-        // 3. extract user id
-        const _id = req.userID
-        // const userProfile = await userSchema.findOne({ _id: _id })
-        // // 4. get user profile based on user id 
-        // res.status(200).json({ user: userProfile })
+        // check if admin is authorized using middleware adminAuth
+        // extract adminID
+        const _id = req.adminID
 
-        // all user info will be available in this private route? YES because only admin will be able to login
-        const adminProfile = await userSchema.findOne({ _id })
+        // get admin profile
+        const adminProfile = await adminSchema.findOne({ _id })
+        res.status(200).json(adminProfile)
 
-        const userProfile = await userSchema.find()
-
-        res.status(200).json(userProfile)
     } catch (error) {
         console.log(error)
         res.status(500).json(error.message)
     }
 })
 
-// create a user
+// create admin
 router.post('/', async (req, res) => {
-    const { first_name, last_name, phone_number, email, password } = req.body
-
-
     try {
-        const hashedpw = await bcrypt.hash(password, saltRounds)
+        const { email, password } = req.body
+        const hashedpw = await hashPassword(password)
 
-        const newUserObj = {
-            first_name,
-            last_name,
-            phone_number,
+        const adminObj = {
             email,
             password: hashedpw
         }
 
-        await userSchema(newUserObj).save()
-        res.status(201).json({ message: 'User created successfully!' })
+        await adminSchema(adminObj).save()
+        res.status(201).json({ message: 'Admin created successfully!' })
+
     } catch (error) {
         console.log(error)
         res.status(500).json(error.message)
@@ -61,7 +53,7 @@ router.post('/', async (req, res) => {
 })
 
 
-// user sign in route
+// admin sign in route
 router.post('/login', async (req, res) => {
     const { email, password } = req.body // this will be plain text pw
 
@@ -73,30 +65,30 @@ router.post('/login', async (req, res) => {
 
     // get email and check if it exists in DB
     try {
-        const user = await userSchema.findOne({ email })
-        // console.log(user)
+        const admin = await adminSchema.findOne({ email })
+
 
         // get hashed pw from db
-        const hashedPwFromDb = user && user._id && user.email === 'admin@gmail.com' ? user.password : null
+        const hashedPwFromDb = admin && admin._id && admin.email === 'admin@gmail.com' ? admin.password : null
 
         if (hashedPwFromDb === null) {
-            return res.json({ status: "error", message: "Invalid Email or Password! Only admin can log in" })
+            return res.json({ status: "error", message: "Invalid Email or Password!" })
         }
 
         // compare plain text and hashed pw
-        const match = await bcrypt.compare(password, hashedPwFromDb)
+        const match = await comparePassword(password, hashedPwFromDb)
 
         if (!match) {
             return res.json({ status: "error", message: "Invalid Email or Password!" })
         }
 
         // if matches, create jwt, login authorized
-        const accessJWT = await createAccessJWT(user.email, `${user._id}`) // expecting email and id
-        const refreshJWT = await createRefreshJWT(user.email, `${user._id}`) // expecting email and id
+        const accessJWT = await createAccessJWT(admin.email, `${admin._id}`) // expecting email and id
+        const refreshJWT = await createRefreshJWT(admin.email, `${admin._id}`) // expecting email and id
 
         res.status(200).json({
             status: "success",
-            message: "Login successfully",
+            message: "Admin Login successfully",
             accessJWT,
             refreshJWT
         })
@@ -105,8 +97,6 @@ router.post('/login', async (req, res) => {
         console.log(error)
         res.status(500).json(error.message)
     }
-
-
 })
 
 
@@ -114,12 +104,13 @@ router.post('/login', async (req, res) => {
 router.delete('/logout', adminAuth, async (req, res) => {
     try {
         const { authorization } = req.headers
-        const userJWT = authorization.replace('Bearer ', '')
-        const _id = req.userID
-        deleteJWT(userJWT)
+        const adminJWT = authorization.replace('Bearer ', '')
+        deleteJWT(adminJWT)
+
+        const _id = req.adminID
 
         // delete refresh jwt from mongo db
-        const result = await userSchema.findOneAndUpdate(
+        const result = await adminSchema.findOneAndUpdate(
             { _id },
             {
                 $set: {

@@ -1,5 +1,5 @@
 const express = require('express')
-const { route } = require('./user.route')
+const { route } = require('./tech.route')
 const router = express.Router()
 
 const { ticketSchema } = require('../schema/ticket.schema')

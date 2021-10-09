@@ -11,8 +11,6 @@ const connectDB = require('./backend/config/db')
 connectDB()
 
 
-// app.use(express.static(path.join(__dirname, '/client/build')))
-
 
 // middle wares
 app.use(express.json())
@@ -20,7 +18,8 @@ app.use(cors())
 
 
 // routes
-app.use('/api/user', require('./backend/routes/user.route'))
+app.use('/api/admin', require('./backend/routes/admin.route'))
+app.use('/api/tech', require('./backend/routes/tech.route'))
 app.use('/api/ticket', require('./backend/routes/ticket.route'))
 
 // Deployment
