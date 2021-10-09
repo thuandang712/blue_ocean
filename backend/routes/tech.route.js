@@ -55,7 +55,7 @@ router.post('/', adminAuth, async (req, res) => {
 
 
 // update status of tech to unavailable
-router.patch('/status/:_id', adminAuth, async (req, res) => {
+router.patch('/:_id/status/unavailable', adminAuth, async (req, res) => {
     try {
         const { _id } = req.params
         const result = await techSchema.findOneAndUpdate(
@@ -83,16 +83,9 @@ router.patch('/:_id', adminAuth, async (req, res) => {
         const { _id } = req.params
         const { first_name, last_name, phone_number, email } = req.body
 
-        const techObj = {
-            first_name,
-            last_name,
-            phone_number,
-            email
-        }
-
         const result = await techSchema.findOneAndUpdate(
             { _id },
-            techObj,
+            { first_name, last_name, phone_number, email },
             { new: true }
         )
 
