@@ -5,21 +5,22 @@ import { useHistory, useLocation, Link } from "react-router-dom";
 
 import './login.style.css'
 
+
 const Login = () => {
+
     const history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/login" } };
 
 
+    useEffect(() => {
+        sessionStorage.getItem("accessJWT") && history.replace(from);
+    }, [history]);
+
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [isAuth, setisAuth] = useState(false)
-
-
-    useEffect(() => {
-        sessionStorage.getItem("accessJWT") && history.replace(from);
-    }, [history, isAuth]);
+    // const [isAuth, setisAuth] = useState(false)
 
 
     const handleOnChange = e => {
@@ -28,58 +29,44 @@ const Login = () => {
         if (name === 'password') setPassword(value)
     }
 
+
     const handleOnSubmit = async e => {
         e.preventDefault()
 
-
         // TODO call api to check if email and pw matching the db
         try {
-            // const isAuth = await userLogin({ email, password });
             const obj = { email, password }
 
-            const res = await userLogin(obj)
+            const res = await axios.post('http://localhost:5000/api/admin/login', obj);
 
-            console.log(res)
 
-            if (res.status === "error") {
-                return alert(res.message)   /// change to a error box later
+            if (res.data.status === "error") {
+                // setisAuth(false)
+                return alert(res.data.message)   /// change to a error box later
             }
 
-            // setisAuth(true)
-            // dispatch(getUserProfile());
+
+            // if (res.data.status === "success") {
+            sessionStorage.setItem("accessJWT", res.data.accessJWT);
+            localStorage.setItem(
+                "crmSite",
+                JSON.stringify({ refreshJWT: res.data.refreshJWT })
+            );
+
+            // get techs 
+            // get tickets
+
             history.push("/dashboard");
 
         } catch (error) {
             console.log(error)
-            setisAuth(false)
+            // setisAuth(false)
+            return alert(error.message)
         }
 
 
-        //
-        // setEmail('')
-        // setPassword('')
     }
 
-    const userLogin = async obj => {
-        return new Promise(async (resolve, reject) => {
-            try {
-                const res = await axios.post('http://localhost:5000/api/user/login', obj);
-
-                resolve(res.data);
-
-                if (res.data.status === "success") {
-                    sessionStorage.setItem("accessJWT", res.data.accessJWT);
-                    localStorage.setItem(
-                        "crmSite",
-                        JSON.stringify({ refreshJWT: res.data.refreshJWT })
-                    );
-                }
-            } catch (error) {
-                reject(error);
-            }
-        });
-
-    }
 
     return (
         <Container>

@@ -13,8 +13,8 @@ const Header = () => {
             <Navbar.Collapse id='basic-navbar-nav'>
                 <Nav className="ms-auto me-5">
                     <Nav.Link className="px-4" href='/dashboard'>Dashboard</Nav.Link>
-                    <Nav.Link className="px-4" href='/techs'>Tech</Nav.Link>
-                    <Nav.Link className="px-4" href='/tickets'>Ticket</Nav.Link>
+                    <Nav.Link className="px-4" href='/tech'>Tech</Nav.Link>
+                    <Nav.Link className="px-4" href='/ticket'>Ticket</Nav.Link>
                     <Nav.Link className="px-4" href='/logout'>Log out</Nav.Link>
                 </Nav>
             </Navbar.Collapse>

@@ -1,29 +1,24 @@
 import React from 'react';
+import { Card, Col } from 'react-bootstrap'
 
+const TechItem = ({ tech }) => {
 
-class TechItem extends React.Component {
-    render() {
-        const {trainer, getTech, deleteTech} = this.props
-
-        const handleDeleteTech = (e) => {
-            console.log(e.target.id)
-            deleteTech(parseInt(e.target.id))
-        }
-        
-        
-        const handleGetTech = (e) => {
-            getTech(e.target.id)
-        }
-
-        return(
-            <div className="container">
-                <button className = "deleteButton" id={trainer.trainer_id} onClick= {handleDeleteTech}>Delete</button>
-                <h1 className="listItem" onClick={handleGetTech} id={tech.tech_id}>{tech.first_name} {tech.last_name}</h1>
-                <p>{`Comm: ${tech.phone_number}`}</p>
-                <p>{`Comm: ${tech.email}`}</p>
-            </div>
-        )
-    }
+    return (
+        <Col>
+            <Card>
+                {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
+                <Card.Body>
+                    <Card.Title>{`${tech.first_name} ${tech.last_name}`}</Card.Title>
+                    <Card.Text>
+                        Phone: {tech.phone_number}
+                        <br />
+                        Email: {tech.email}
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+        </Col>
+    )
 }
+
 
 export default TechItem

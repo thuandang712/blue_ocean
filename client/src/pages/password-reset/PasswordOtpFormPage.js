@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 
 import { Jumbotron } from "react-bootstrap";
@@ -9,7 +9,7 @@ import "./PasswordOtpForm.style.css";
 
 
 const PasswordOtpForm = () => {
-    const {showUpdatePassForm} = useSelector(state => state.password);
+    const { showUpdatePassForm } = useSelector(state => state.password);
 
     return (
         <div className="entry-page bg-info">
