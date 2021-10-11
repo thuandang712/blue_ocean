@@ -82,7 +82,7 @@ const Login = () => {
                                 value={email}
                                 onChange={handleOnChange}
                                 placeholder="Email"
-                                maxLength="30"
+                                maxLength="50"
                                 required
                             />
                         </Form.Group>
@@ -94,7 +94,7 @@ const Login = () => {
                                 onChange={handleOnChange}
                                 value={password}
                                 placeholder="Password"
-                                maxLength="30"
+                                maxLength="100"
                                 required
                             />
                         </Form.Group>
