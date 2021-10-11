@@ -12,6 +12,8 @@ import Tickets from './components/ticket/Tickets';
 import DefaultLayout from './layout/DefaultLayout';
 import Registration from "./pages/registration/registrationPage";
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
+import AddTicket from './pages/add-ticket/AddTicket';
+
 
 
 
@@ -64,6 +66,11 @@ class App extends React.Component {
               </DefaultLayout>
             </Route>
 
+            <Route exact path='/add-tech'>
+              <DefaultLayout>
+                <AddTicket />
+              </DefaultLayout>
+            </Route>
 
             <Route exact path='/password-reset'>
               <PasswordOtpFormPage />
