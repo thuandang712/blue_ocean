@@ -29,6 +29,10 @@ const Header = () => {
             <Navbar.Collapse id='basic-navbar-nav'>
                 <Nav className="ms-auto me-5">
 
+                    {/* <LinkContainer to='/'>
+                        <Nav.Link className="px-4">Home</Nav.Link>
+                    </LinkContainer> */}
+
                     <LinkContainer to='/dashboard'>
                         <Nav.Link className="px-4">Dashboard</Nav.Link>
                     </LinkContainer>

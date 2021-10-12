@@ -12,27 +12,13 @@ import Tickets from './components/ticket/Tickets';
 import DefaultLayout from './layout/DefaultLayout';
 import Registration from "./pages/registration/registrationPage";
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
-import AddTicket from './pages/add-ticket/AddTicket';
-
+import AddTech from './pages/add-tech/AddTech';
+import SingleTech from './components/tech/SingleTech'
 
 
 
 class App extends React.Component {
 
-
-  // async componentDidMount() {
-  //   const result = await axios.get('/api/user')
-  //   console.log(result)
-  // };
-
-
-  //   const getTech = async (id) => {
-  //     this.setState({ loading: true })
-  //     const res = await axios.get(`https://blue-ocean-ticketing-system.herokuapp.com/api/users/${id}`)
-  //     this.setState({ singleTech: res.data })
-  //     this.setState({ loading: false })
-  //   }
-  // }
 
   render() {
     return (
@@ -66,9 +52,15 @@ class App extends React.Component {
               </DefaultLayout>
             </Route>
 
+            <Route exact path='/tech/:_id'>
+              <DefaultLayout>
+                <SingleTech />
+              </DefaultLayout>
+            </Route>
+
             <Route exact path='/add-tech'>
               <DefaultLayout>
-                <AddTicket />
+                <AddTech />
               </DefaultLayout>
             </Route>
 

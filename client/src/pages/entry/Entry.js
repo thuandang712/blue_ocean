@@ -11,9 +11,9 @@ const Entry = () => {
                 <Link to="/login">
                     <Button className='login-btn' size='lg'>Login</Button>
                 </Link>
-                <Link to="/register">
+                {/* <Link to="/register">
                     <Button className='register-btn' size='lg'>Register</Button>
-                </Link>
+                </Link> */}
             </div>
         </div>
     )

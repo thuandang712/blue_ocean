@@ -6,7 +6,7 @@ import { Form, Row, Col } from "react-bootstrap";
 const SearchForm = () => {
 
     const handleOnChange = (e) => {
-        const { value } = e.target;
+        // const { value } = e.target;
 
         // filter search function
     };
@@ -20,6 +20,7 @@ const SearchForm = () => {
                             // name="searchStr"
                             onChange={handleOnChange}
                             placeholder="Search..."
+                        // value={value}
                         />
                     </Col>
                 </Form.Group>
