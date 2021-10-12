@@ -1,26 +1,26 @@
 import React from 'react'
-import axios from 'axios'
 
-import { Form, Jumbotron, Row, Col, Button, Spinner, Alert } from "react-bootstrap";
+import { Form, Jumbotron, Row, Col, Button, Alert } from "react-bootstrap";
+import { createTech } from '../../api/tech.api';
 
 
 class AddTechForm extends React.Component {
-
 
     state = {
         first_name: '',
         last_name: '',
         phone_number: '',
         email: '',
-        error: null,
         loading: false,
+        status: '',
+        message: ''
     }
 
     // useEffect()
 
     render() {
 
-        const { first_name, last_name, phone_number, email, error, loading } = this.state
+        const { first_name, last_name, phone_number, email, status, message } = this.state
 
 
         const handleOnChange = (e) => {
@@ -32,80 +32,43 @@ class AddTechForm extends React.Component {
 
         const handleOnSubmit = async (e) => {
             e.preventDefault();
-            // handleError()
-            // setTimeout(() => { this.setState({ error: null }) }, 5000)
 
-
-            const formData = { first_name, last_name, phone_number, email } // key has to match with db
-
-
-            // if (!first_name || !last_name || !phone_number || !email) {
-            //     this.setState({ error: true })
-            // }
-
-            // this.setState({ error: null })
-
+            const techObj = { first_name, last_name, phone_number, email } // key has to match with db
 
             this.setState({ loading: true })
 
+            // POST request to /api/tech/ 
+            const resData = await createTech(techObj)
 
-            // check duplicate email
-            // make a get request to check email 
-            const res = await axios.get("http://localhost:5000/api/tech", {
-                headers: {
-                    Authorization: sessionStorage.getItem("accessJWT"),
-                }
-            })
-
-            res.data.tech.map(tech => {
-                if (email === tech.email) {
-                    return alert('Email has been taken. Please choose a different one.')
-                }
-                return tech
-            })
-
-            this.setState({ loading: false })
-
-            // end the process
-
-
-
-            // otherwise, make post request
-
-            this.setState({ loading: true })
-
-            // POST request to /api/tech/ with authorization header
-            const tech = await axios.post("http://localhost:5000/api/tech", formData, {
-                headers: {
-                    Authorization: sessionStorage.getItem("accessJWT"),
-                }
-            })
-
-            console.log(tech.data)
-
-            if (tech.data.status === "error") {
-                return alert(tech.data.message)
+            if (resData.status === "success") {
+                this.setState({ loading: false, status: 'success', message: resData.message })
+                this.setState({ first_name: '', last_name: '', phone_number: '', email: '' })
+            } else {
+                this.setState({ loading: false, status: 'error', message: resData.message })
+                this.setState({ email: '' })
             }
-
-            alert(tech.data.message)
-
-
-            this.setState({ loading: false })
-
-
         }
 
 
 
         return (
             <Jumbotron className="mt-3 add-new-ticket bg-light">
-                <h1 className="text-info text-center">Add New Ticket</h1>
-                <hr />
-                <div>
-                    {error && <Alert variant="danger">Please fill out the required fields.</Alert>}
-                    {/* {successMsg && <Alert variant="primary">{successMsg}</Alert>} */}
-                    {loading && <Spinner variant="primary" animation="border" />}
-                </div>
+                <Row>
+                    <Col>
+                        <h1 className="text-info text-center mb-2">Add New Tech</h1>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col>
+                        {message && (
+                            <Alert variant={status === "success" ? "success" : "danger"}>
+                                {message}
+                            </Alert>
+                        )}
+                    </Col>
+                </Row>
+
                 <Form autoComplete="off" onSubmit={handleOnSubmit}>
                     <Form.Group as={Row}>
                         <Form.Label column sm={3}>First Name</Form.Label>
@@ -119,7 +82,6 @@ class AddTechForm extends React.Component {
                                 required
                             />
                             <Form.Text className="text-danger">
-                                {/* {frmDataErro.subject && "First name is required!"} */}
                             </Form.Text>
                         </Col>
                     </Form.Group>
@@ -136,7 +98,6 @@ class AddTechForm extends React.Component {
                                 required
                             />
                             <Form.Text className="text-danger">
-                                {/* {frmDataErro.subject && "Last name is required!"} */}
                             </Form.Text>
                         </Col>
                     </Form.Group>
@@ -153,7 +114,6 @@ class AddTechForm extends React.Component {
                                 required
                             />
                             <Form.Text className="text-danger">
-                                {/* {frmDataErro.subject && "Phone number is required!"} */}
                             </Form.Text>
                         </Col>
                     </Form.Group>
@@ -172,7 +132,6 @@ class AddTechForm extends React.Component {
                                 required
                             />
                             <Form.Text className="text-danger">
-                                {/* {frmDataErro.subject && "Email is required!"} */}
                             </Form.Text>
                         </Col>
                     </Form.Group>

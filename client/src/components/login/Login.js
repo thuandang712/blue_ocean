@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap'
 import { useHistory, useLocation, Link } from "react-router-dom";
-
+import { adminLogin } from '../../api/admin.api';
 import './login.style.css'
 
 
 const Login = () => {
-
     const history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/login" } };
@@ -20,10 +18,11 @@ const Login = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    // const [isAuth, setisAuth] = useState(false)
+    const [isAuth, setisAuth] = useState(null)
 
 
     const handleOnChange = e => {
+        setisAuth(null)
         const { name, value } = e.target
         if (name === 'email') setEmail(value)
         if (name === 'password') setPassword(value)
@@ -34,38 +33,17 @@ const Login = () => {
         e.preventDefault()
 
         // TODO call api to check if email and pw matching the db
-        try {
-            const obj = { email, password }
+        const obj = { email, password }
+        const resData = await adminLogin(obj)
 
-            const res = await axios.post('http://localhost:5000/api/admin/login', obj);
-
-
-            if (res.data.status === "error") {
-                // setisAuth(false)
-                return alert(res.data.message)   /// change to a error box later
-            }
-
-
-            // if (res.data.status === "success") {
-            sessionStorage.setItem("accessJWT", res.data.accessJWT);
-            localStorage.setItem(
-                "crmSite",
-                JSON.stringify({ refreshJWT: res.data.refreshJWT })
-            );
-
-            // get techs 
-            // get tickets
-
+        if (resData.status === "error") {
+            return setisAuth(false)
+        } else {
+            setisAuth(true)
             history.push("/dashboard");
-
-        } catch (error) {
-            console.log(error)
-            // setisAuth(false)
-            return alert(error.message)
         }
-
-
     }
+
 
 
     return (
@@ -104,6 +82,15 @@ const Login = () => {
                     </Form>
                 </Col>
             </Row>
+
+
+            {isAuth === false &&
+                <Row className="mx-auto w-50 h-50">
+                    <Col>
+                        <Alert variant="danger">Invalid Email or Password!</Alert>
+                    </Col>
+                </Row>
+            }
 
             <Row className="mx-auto w-50">
                 <Col>

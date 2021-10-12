@@ -1,7 +1,7 @@
 import React from 'react';
 import TechItem from './TechItem';
-import axios from 'axios'
 
+import { fetchSingleTech, fetchTech } from '../../api/tech.api';
 
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -19,21 +19,36 @@ class Tech extends React.Component {
 
     async componentDidMount() {
         this.setState({ loading: true })
-
-        const techs = await axios.get("http://localhost:5000/api/tech", {
-            headers: {
-                Authorization: sessionStorage.getItem("accessJWT"),
-            }
-        })
-
-
-        this.setState({ techs: techs.data.tech })
+        const res = await fetchTech()
+        this.setState({ techs: res.tech })
         this.setState({ loading: false })
     }
 
 
+
     render() {
-        const { techs } = this.state
+        const { techs, singleTech } = this.state
+
+
+        // select single trainer 
+        const selectSingleTech = async (_id) => {
+            console.log(_id)
+            const res = await fetchSingleTech(_id)
+            console.log(res)
+            // this.setState({ singleTrainer: res.data })
+            // FILTER reviews belongs to the single trainer
+            // const resReviews = await axios.get("http://localhost:5500/api/comments")
+            // const rev = resReviews.data.filter(review => review.trainer_id === parseInt(id))
+            // this.setState({ reviews: rev })
+        }
+
+
+        // clear single trainer 
+        // const clearSingleTech = () => {
+        //     this.setState({ singleTrainer: null })
+        // }
+
+
 
         return (
             <div>
@@ -57,7 +72,7 @@ class Tech extends React.Component {
                     <Row xs={1} md={3} className="g-5 mt-2">
                         {techs.length ? (
                             techs.map(tech => (
-                                <TechItem key={tech._id} tech={tech} />
+                                <TechItem key={tech._id} tech={tech} selectSingleTech={selectSingleTech} />
                             ))
                         ) : (
                             <h1>No Tech Found!</h1>

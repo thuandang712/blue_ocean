@@ -49,7 +49,14 @@ router.post('/', adminAuth, async (req, res) => {
 
     } catch (error) {
         console.log(error)
-        res.status(500).json({ status: "error", message: error.message })
+
+        // check duplicate email and send message to front end
+        if (error.message.includes("duplicate key error collection")) {
+            message = "This email has already been used. Please choose a different email!";
+        }
+
+        res.json({ status: "error", message })
+
     }
 })
 
