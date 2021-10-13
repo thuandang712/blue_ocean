@@ -12,8 +12,9 @@ import Tickets from './components/ticket/Tickets';
 import DefaultLayout from './layout/DefaultLayout';
 import Registration from "./pages/registration/registrationPage";
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
-import AddTech from './pages/add-tech/AddTech';
+import AddTech from './components/tech/AddTech'
 import SingleTech from './components/tech/SingleTech'
+import AddTicket from './components/ticket/AddTicket';
 
 
 
@@ -43,6 +44,12 @@ class App extends React.Component {
             <Route exact path='/ticket'>
               <DefaultLayout>
                 <Tickets />
+              </DefaultLayout>
+            </Route>
+
+            <Route exact path='/add-ticket'>
+              <DefaultLayout>
+                <AddTicket />
               </DefaultLayout>
             </Route>
 
