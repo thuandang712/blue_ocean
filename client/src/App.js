@@ -11,7 +11,7 @@ import Entry from './pages/entry/Entry';
 import Registration from "./pages/registration/registrationPage";
 
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
-import { DefaultLayout } from './layout/DefaultLayout';
+// import { DefaultLayout } from './layout/DefaultLayout';
 
 class App extends React.Component {
   state = {
@@ -24,18 +24,19 @@ class App extends React.Component {
 
   async componentDidMount () {
     this.setState({loading: true})
-    const res = await axios.get("https://blue-ocean-ticketing-system.herokuapp.com/api/users")
+    const res = await axios.get("/api/users")
     this.setState({loading: false, techs: res.data})
+  }
 
-
-
+  async componentDidMount () {
     const getTech = async (id) => {
     this.setState({loading: true})
-    const res = await axios.get(`https://blue-ocean-ticketing-system.herokuapp.com/api/users/${id}`)
+    const res = await axios.get(`/api/users/${id}`)
     this.setState({singleTech: res.data})
     this.setState({loading: false})
     }
-}
+  }
+
 
 
   render() {
@@ -54,15 +55,13 @@ class App extends React.Component {
           <Route exact path='/password-reset'>
             <PasswordOtpFormPage />
           </Route>
-
-
           <Route exact path="/register">
             <Registration />
           </Route>
 
-          <Route exact path='/defaultlayout'>
+          {/* <Route exact path='/defaultlayout'>
             <DefaultLayout />
-          </Route>
+          </Route> */}
           
 
         </Router>
