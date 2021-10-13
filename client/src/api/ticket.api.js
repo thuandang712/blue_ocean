@@ -4,25 +4,74 @@ const rootUrl = "http://localhost:5000/api/";
 const ticketURL = rootUrl + "ticket"
 
 
-export const fetchTicket = () => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            const accessJWT = sessionStorage.getItem("accessJWT");
+export const fetchTicket = async () => {
 
-            if (!accessJWT) {
-                reject("Token not found!");
-            }
+    try {
+        const res = await axios.get(ticketURL, {
+            headers: {
+                Authorization: sessionStorage.getItem("accessJWT"),
+            },
+        });
 
-            const res = await axios.get(ticketURL, {
-                headers: {
-                    Authorization: accessJWT,
-                },
-            });
+        return res.data
 
-            resolve(res.data);
-        } catch (error) {
-            console.log(error);
-            reject(error.message);
-        }
-    });
+    } catch (error) {
+        console.log(error);
+        return error
+    }
+}
+
+
+export const createTicket = async (obj) => {
+
+    try {
+        const res = await axios.post(ticketURL, obj, {
+            headers: {
+                Authorization: sessionStorage.getItem("accessJWT"),
+            },
+        });
+
+        return res.data;
+
+    } catch (error) {
+        console.log(error)
+        return error
+    }
 };
+
+
+
+export const fetchSingleTicket = async (_id) => {
+    try {
+        const res = await axios.get(ticketURL + `/${_id}`, {
+            headers: {
+                Authorization: sessionStorage.getItem("accessJWT"),
+            },
+        });
+
+        return res.data;
+
+    } catch (error) {
+        console.log(error)
+        return error
+    }
+}
+
+
+export const deleteSingleTicket = async (_id) => {
+    try {
+        const res = await axios.delete(ticketURL + `/${_id}`, {
+            headers: {
+                Authorization: sessionStorage.getItem("accessJWT"),
+            },
+        });
+
+        return res.data;
+
+    } catch (error) {
+        console.log(error)
+        return error
+    }
+}
+
+

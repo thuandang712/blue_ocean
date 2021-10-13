@@ -59,5 +59,20 @@ export const fetchSingleTech = async (_id) => {
 }
 
 
+export const deleteSingleTech = async (_id) => {
+  try {
+    const res = await axios.delete(techURL + `/${_id}`, {
+      headers: {
+        Authorization: sessionStorage.getItem("accessJWT"),
+      },
+    });
+
+    return res.data;
+
+  } catch (error) {
+    console.log(error)
+    return error
+  }
+}
 
 
