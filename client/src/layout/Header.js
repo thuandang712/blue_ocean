@@ -16,7 +16,7 @@ const Header = () => {
         });
         sessionStorage.removeItem("accessJWT");
         localStorage.removeItem("crmSite");
-        history.push("/");
+        history.push("/login");
     };
 
 
@@ -32,10 +32,6 @@ const Header = () => {
                     {/* <LinkContainer to='/'>
                         <Nav.Link className="px-4">Home</Nav.Link>
                     </LinkContainer> */}
-
-                    <LinkContainer to='/dashboard'>
-                        <Nav.Link className="px-4">Dashboard</Nav.Link>
-                    </LinkContainer>
 
                     <LinkContainer to='/tech'>
                         <Nav.Link className="px-4">Tech</Nav.Link>

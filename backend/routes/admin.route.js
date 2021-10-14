@@ -69,7 +69,7 @@ router.post('/login', async (req, res) => {
 
 
         // get hashed pw from db
-        const hashedPwFromDb = admin && admin._id && admin.email === 'admin@gmail.com' ? admin.password : null
+        const hashedPwFromDb = admin && admin._id && admin.email ? admin.password : null
 
         if (hashedPwFromDb === null) {
             return res.json({ status: "error", message: "Invalid Email or Password!" })

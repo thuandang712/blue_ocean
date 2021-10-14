@@ -40,7 +40,7 @@ const Login = () => {
             return setisAuth(false)
         } else {
             setisAuth(true)
-            history.push("/dashboard");
+            history.push("/tech");
         }
     }
 

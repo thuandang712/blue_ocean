@@ -6,7 +6,6 @@ import './App.css';
 
 import Entry from './pages/entry/Entry';
 import Login from './components/login/Login';
-import Dashboard from './pages/dashboard/Dashboard'
 import Tech from './components/tech/Tech'
 import Tickets from './components/ticket/Tickets';
 import DefaultLayout from './layout/DefaultLayout';
@@ -35,11 +34,7 @@ class App extends React.Component {
               <Login />
             </Route>
 
-            <Route exact path="/dashboard">
-              <DefaultLayout>
-                <Dashboard />
-              </DefaultLayout>
-            </Route>
+
 
             <Route exact path='/ticket'>
               <DefaultLayout>
