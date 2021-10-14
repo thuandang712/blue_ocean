@@ -149,4 +149,4 @@ class AddTechForm extends React.Component {
 
 
 
-export default AddTechForm
+export default AddTechForm;
