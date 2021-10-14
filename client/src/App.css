@@ -25,3 +25,14 @@
   color: #fff;
   padding: 1rem
 }
+
+#title{
+  font-family: 'Merriweather', serif;
+  transition: .5s ease;
+}
+
+#title:hover{
+  cursor: pointer;
+  transition: 1 ease;
+  color:royalblue
+}
