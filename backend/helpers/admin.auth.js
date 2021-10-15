@@ -11,7 +11,7 @@ const adminAuth = async (req, res, next) => {
     const decoded = await verifyAccessJWT(adminJWT)
 
 
-    if (decoded.email === 'admin@gmail.com') {
+    if (decoded.email) {
         // check if jwt exists in redis
         const adminID = await getJWT(adminJWT)
 
