@@ -15,6 +15,8 @@ import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
 import AddTech from './components/tech/AddTech'
 import SingleTech from './components/tech/SingleTech'
 import AddTicket from './components/ticket/AddTicket';
+import TicketLists from './pages/ticket-list/TicketListsPage';
+import Ticket from './pages/ticket/TicketPage';
 
 
 
@@ -77,6 +79,14 @@ class App extends React.Component {
 
             <Route exact path="/register">
               <Registration />
+            </Route>
+
+            <Route exact path="/tickets/:tId">
+              <Ticket/>
+            </Route>
+
+            <Route exact path="/tickets">
+              <TicketLists/>
             </Route>
 
 

@@ -23,7 +23,7 @@ const Header = () => {
     return (
         <Navbar collapseOnSelect variant='dark' bg='dark' expand='md'>
             <Navbar.Brand className="ms-5 my-2">
-                <img src={logo} alt='logo' width='200px' />
+                <img src={logo} alt='logo' width='175px' />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav'>
