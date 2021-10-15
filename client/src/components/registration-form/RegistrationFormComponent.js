@@ -73,14 +73,12 @@ const RegistrationForm = () => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        const {name, phone, email, company, address, password} = newUser;
+        const {name, phone, email, password} = newUser;
 
         const newRegistration = {
             name,
             phone,
             email,
-            company,
-            address,
             password,
         };
         dispatch(newUserRegistration(newRegistration));
@@ -140,30 +138,6 @@ const RegistrationForm = () => {
                                 value={newUser.email}
                                 onChange={handleOnChange}
                                 placeholder="Enter Email"
-                                required
-                                />
-                        </Form.Group>
-
-                        <Form.Group>
-                            <Form.Label>Company Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="company"
-                                value={newUser.company}
-                                onChange={handleOnChange}
-                                placeholder="Company Name"
-                                required
-                                />
-                        </Form.Group>
-
-                        <Form.Group>
-                            <Form.Label>Address</Form.Label>
-                            <Form.Control
-                                type="text"
-                                name="address"
-                                value={newUser.address}
-                                onChange={handleOnChange}
-                                placeholder="Full Address"
                                 required
                                 />
                         </Form.Group>
