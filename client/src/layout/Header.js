@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
+import { Navbar, Nav, Container } from 'react-bootstrap'
 import { useHistory } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import axios from 'axios'
@@ -21,7 +21,9 @@ const Header = () => {
 
 
     return (
-        <Navbar collapseOnSelect variant='dark' bg='dark' expand='md'>
+        <Container className='headCont mh-100 mw-100' >
+
+        <Navbar collapseOnSelect variant='dark' expand='md'>
             <Navbar.Brand className="ms-5 my-2">
 
                 {/* <img src={logo} alt='logo' width='175px' /> */}
@@ -38,18 +40,19 @@ const Header = () => {
                     </LinkContainer> */}
 
                     <LinkContainer to='/tech'>
-                        <Nav.Link className="px-4">Tech</Nav.Link>
+                        <Nav.Link className="px-4"><div className='almondText'> TECH </div> </Nav.Link>
                     </LinkContainer>
 
                     <LinkContainer to='/ticket'>
-                        <Nav.Link className="px-4" >Ticket</Nav.Link>
+                        <Nav.Link className="px-4"> <div className='almondText'> TICKET </div></Nav.Link>
                     </LinkContainer>
 
-                    <Nav.Link className="px-4" onClick={logMeOut}>Log out</Nav.Link>
+                    <Nav.Link className="px-4" onClick={logMeOut}><div className='almondText'> LOGOUT </div></Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
+        </Container>
     )
 }
 
-export default Header
+export default Header;

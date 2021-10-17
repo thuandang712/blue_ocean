@@ -37,6 +37,35 @@ class Tech extends React.Component {
         }
 
         return (
+<<<<<<< HEAD
+            <Container className='techPage mh-100 mw-100'>
+                <Row>
+                    <Col>
+                        <h1 id='techTitle'> Tech List</h1>
+                    </Col>
+                </Row>
+                <Row className="mt-4">
+                    <Col>
+                        <Link to="/add-tech">
+                            <Button id='addNewTechBTN'  data-toggle="button"> <div id='btnText'>Add New Tech</div> </Button>
+                        </Link>
+                    </Col>
+                    <Col className="text-right">
+                        <SearchForm />
+                    </Col>
+                </Row>
+
+                <Row xs={1} md={3} className="g-5 mt-2">
+                    {techs.length ? (
+                        techs.map(tech => (
+                            <TechItem key={tech._id} tech={tech} selectSingleTech={selectSingleTech} deleteTech={deleteTech} />
+                        ))
+                    ) : (
+                        <h1>No Tech Found!</h1>
+                    )}
+                </Row>
+            </Container>
+=======
             <DefaultLayout>
                 <Container>
                     <Row>
@@ -64,6 +93,7 @@ class Tech extends React.Component {
                     </Row>
                 </Container>
             </DefaultLayout>
+>>>>>>> 138d938fbc7ef7dbeacda75f022601b306022eeb
         )
     };
 }
