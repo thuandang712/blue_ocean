@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
-import './entry.style.css'
+// import './entry.style.css'
 
 const Entry = () => {
     return (

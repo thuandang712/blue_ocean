@@ -6,7 +6,7 @@ const createAccessJWT = async (email, _id) => {
     const accessJWT = await jwt.sign(
         { email },
         process.env.JWT_ACCESS_KEY,
-        { expiresIn: '30m' } // change back to 15m after debugging
+        { expiresIn: '30d' } // change back to 15m after debugging
     );
 
     setJWT(accessJWT, _id)

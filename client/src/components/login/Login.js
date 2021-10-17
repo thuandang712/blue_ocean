@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap'
 import { useHistory, useLocation, Link } from "react-router-dom";
 import { adminLogin } from '../../api/admin.api';
-import './login.style.css'
+import '../../App.css'
 
 
 const Login = () => {
@@ -40,20 +40,20 @@ const Login = () => {
             return setisAuth(false)
         } else {
             setisAuth(true)
-            history.push("/dashboard");
+            history.push("/tech");
         }
     }
 
 
 
     return (
-        <Container>
+        <Container className="loginPage">
             <Row className="mx-auto w-50">
                 <Col>
-                    <h1 className="text-info text-center mt-5">Admin Login</h1>
+                    <h1 className="login-title">Admin Login</h1>
                     <Form autoComplete="on" onSubmit={handleOnSubmit}>
                         <Form.Group className="mb-3">
-                            <Form.Label>Email Address</Form.Label>
+                            <Form.Label className='form-label'>Email Address</Form.Label>
                             <Form.Control className=''
                                 type="email"
                                 name="email"
@@ -65,7 +65,7 @@ const Login = () => {
                             />
                         </Form.Group>
                         <Form.Group className="mb-4">
-                            <Form.Label>Password</Form.Label>
+                            <Form.Label className='form-label'>Password</Form.Label>
                             <Form.Control className=''
                                 type="password"
                                 name="password"
@@ -100,7 +100,7 @@ const Login = () => {
 
             <Row className="mx-auto w-50 py-3"> {/* padding-top, padding-bottom 1 rem */}
                 <Col>
-                    Don't have an account yet? <a href="/register">Register Now</a>
+                    <div id='almondText'>Don't have an account yet?</div> <a href="/register">Register Now</a>
                 </Col>
             </Row>
 

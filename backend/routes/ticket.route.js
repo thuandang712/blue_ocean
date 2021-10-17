@@ -35,12 +35,15 @@ router.get('/:_id', adminAuth, async (req, res) => {
 // create a ticket
 router.post('/', adminAuth, async (req, res) => {
     try {
-        const { subject, sender, message } = req.body
+        const { subject, description, status, assignee, priority, type } = req.body
 
         const ticketObj = {
             subject,
-            sender,
-            message
+            description,
+            status,
+            assignee,
+            priority,
+            type
         }
 
         await ticketSchema(ticketObj).save()
@@ -48,54 +51,84 @@ router.post('/', adminAuth, async (req, res) => {
 
     } catch (error) {
         console.log(error)
-        res.status(500).json({ status: "error", message: error.message })
-    }
-})
-
-
-// update status of ticket to working
-router.patch('/:_id/status/working', adminAuth, async (req, res) => {
-    try {
-        const { _id } = req.params
-        const result = await ticketSchema.findOneAndUpdate(
-            { _id },
-            { status: 'Working' },
-            { new: true }
-        )
-
-        if (result._id) {
-            return res.status(200).json({ status: "success", message: "Ticket status updated successfully to working", result });
+        // check duplicate email and send message to front end
+        if (error.message.includes("validation failed")) {
+            message = "Please fill out all the required fields";
         }
 
-        res.json({ status: 'error', message: 'Unable to update status' })
-
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({ status: "error", message: error.message })
+        res.json({ status: "error", message })
     }
 })
 
-// update status of ticket to done
-router.patch('/:_id/status/done', adminAuth, async (req, res) => {
-    try {
-        const { _id } = req.params
-        const result = await ticketSchema.findOneAndUpdate(
-            { _id },
-            { status: 'Done' },
-            { new: true }
-        )
 
-        if (result._id) {
-            return res.status(200).json({ status: "success", message: "Ticket status updated successfully to done", result });
-        }
+// update status of ticket to open
+// router.patch('/:_id/status/open', adminAuth, async (req, res) => {
+//     try {
+//         const { _id } = req.params
+//         const result = await ticketSchema.findOneAndUpdate(
+//             { _id },
+//             { status: 'Open' },
+//             { new: true }
+//         )
 
-        res.json({ status: 'error', message: 'Unable to update status' })
+//         if (result._id) {
+//             return res.status(200).json({ status: "success", message: "Ticket status updated successfully to Open", result });
+//         }
 
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({ status: "error", message: error.message })
-    }
-})
+//         res.json({ status: 'error', message: 'Unable to update status' })
+
+//     } catch (error) {
+//         console.log(error)
+//         res.status(500).json({ status: "error", message: error.message })
+//     }
+// })
+
+
+
+
+// // update status of ticket to working
+// router.patch('/:_id/status/inprogress', adminAuth, async (req, res) => {
+//     try {
+//         const { _id } = req.params
+//         const result = await ticketSchema.findOneAndUpdate(
+//             { _id },
+//             { status: 'In Progress' },
+//             { new: true }
+//         )
+
+//         if (result._id) {
+//             return res.status(200).json({ status: "success", message: "Ticket status updated successfully to In Progress", result });
+//         }
+
+//         res.json({ status: 'error', message: 'Unable to update status' })
+
+//     } catch (error) {
+//         console.log(error)
+//         res.status(500).json({ status: "error", message: error.message })
+//     }
+// })
+
+// // update status of ticket to done
+// router.patch('/:_id/status/resolved', adminAuth, async (req, res) => {
+//     try {
+//         const { _id } = req.params
+//         const result = await ticketSchema.findOneAndUpdate(
+//             { _id },
+//             { status: 'Resolved' },
+//             { new: true }
+//         )
+
+//         if (result._id) {
+//             return res.status(200).json({ status: "success", message: "Ticket status updated successfully to Resolved", result });
+//         }
+
+//         res.json({ status: 'error', message: 'Unable to update status' })
+
+//     } catch (error) {
+//         console.log(error)
+//         res.status(500).json({ status: "error", message: error.message })
+//     }
+// })
 
 
 
@@ -103,11 +136,11 @@ router.patch('/:_id/status/done', adminAuth, async (req, res) => {
 router.patch('/:_id', adminAuth, async (req, res) => {
     try {
         const { _id } = req.params
-        const { subject, sender, message } = req.body
+        const { subject, description, status, assignee, priority, type } = req.body
 
         const result = await ticketSchema.findOneAndUpdate(
             { _id },
-            { subject, sender, message },
+            { subject, description, status, assignee, priority, type },
             { new: true }
         )
 

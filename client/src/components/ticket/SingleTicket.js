@@ -1,15 +1,16 @@
 import React from 'react'
-import DefaultLayout from '../../layout/DefaultLayout';
 import { Container, Form, Jumbotron, Row, Col, Button, Alert } from "react-bootstrap";
-import { createTicket } from '../../api/ticket.api';
+
+import { updateSingleTicket, fetchSingleTicket } from '../../api/ticket.api';
 import { fetchTech } from '../../api/tech.api';
+import DefaultLayout from '../../layout/DefaultLayout';
 
-const priorities = ['', 'Low', 'Medium', 'High'];
-const statuses = ['', 'Open', 'In Progress', 'Resolved'];
-const types = ['', 'Bug/Error', 'Feature Request', 'Security', 'Other'];
+const priorities = ['Low', 'Medium', 'High'];
+const statuses = ['Open', 'In Progress', 'Resolved'];
+const types = ['Bug/Error', 'Feature Request', 'Security', 'Other'];
 
 
-class AddTicket extends React.Component {
+class SingleTicket extends React.Component {
 
     state = {
         subject: '',
@@ -26,33 +27,33 @@ class AddTicket extends React.Component {
 
 
     async componentDidMount() {
+        const { _id } = this.props.match.params;
         this.setState({ loading: true })
-        // set default values
+        // default state of ticket
+        const res = await fetchSingleTicket(_id)
         this.setState({
-            priority: priorities[0],
-            status: statuses[0],
-            type: types[0]
+            subject: res.ticket.subject,
+            description: res.ticket.description,
+            assignee: res.ticket.assignee,
+            priority: res.ticket.priority,
+            status: res.ticket.status,
+            type: res.ticket.type
         })
-        const res = await fetchTech()
-        this.setState({
-            techs: res.tech,
-            assignee: res.tech[0].first_name + ' ' + res.tech[0].last_name, // default value for assignee
-        })
+        // get techs list
+        const { tech } = await fetchTech()
+        this.setState({ techs: tech })
         this.setState({ loading: false })
     }
 
-
     render() {
-
+        const { _id } = this.props.match.params;
         const { subject, description, assignee, priority, status, type, message, techs, server_status } = this.state
-
 
         const handleOnChange = (e) => {
             const key = e.target.name
             const value = e.target.value
             this.setState({ [key]: value })
         }
-
 
         const handleOnSubmit = async (e) => {
             e.preventDefault();
@@ -61,16 +62,14 @@ class AddTicket extends React.Component {
 
             this.setState({ loading: true })
 
-            // POST request to /api/ticket/ 
-            const resData = await createTicket(ticketObj)
+            // PATCH request to /api/ticket/:id
+            const resData = await updateSingleTicket(_id, ticketObj)
 
             if (resData.status === "success") {
                 this.setState({ loading: false, server_status: 'success', message: resData.message })
             } else {
                 this.setState({ loading: false, server_status: 'error', message: resData.message })
             }
-
-            this.setState({ subject: '', description: '', priority: '', status: '', type: '' })
         }
 
 
@@ -81,7 +80,7 @@ class AddTicket extends React.Component {
                     <Jumbotron className="mt-3 add-new-ticket bg-light">
                         <Row>
                             <Col>
-                                <h1 className="text-info text-center mb-2">Add New Ticket</h1>
+                                <h1 className="text-info text-center mb-2">Edit Ticket</h1>
                             </Col>
                         </Row>
 
@@ -192,16 +191,17 @@ class AddTicket extends React.Component {
                             </Form.Group>
 
                             <Button type="submit" variant="info" block>
-                                Add Ticket
+                                Update Ticket
                             </Button>
 
                         </Form>
                     </Jumbotron >
                 </Container >
             </DefaultLayout>
+
         )
     }
 }
 
 
-export default AddTicket
+export default SingleTicket
