@@ -6,16 +6,15 @@ import './App.css';
 
 import Entry from './pages/entry/Entry';
 import Login from './components/login/Login';
-import Tech from './components/tech/Tech'
-import Tickets from './components/ticket/Tickets';
-import DefaultLayout from './layout/DefaultLayout';
 import Registration from "./pages/registration/registrationPage";
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
+import DefaultLayout from './layout/DefaultLayout';
+import Tech from './components/tech/Tech'
 import AddTech from './components/tech/AddTech'
-import SingleTech from './components/tech/SingleTech'
+// import SingleTech from './components/tech/SingleTech'
+import Tickets from './components/ticket/Tickets';
 import AddTicket from './components/ticket/AddTicket';
-import TicketLists from './pages/ticket-list/TicketListsPage';
-import Ticket from './pages/ticket/TicketPage';
+import SingleTicket from './components/ticket/SingleTicket'
 
 
 
@@ -37,12 +36,12 @@ class App extends React.Component {
             </Route>
 
 
-
             <Route exact path='/ticket'>
               <DefaultLayout>
                 <Tickets />
               </DefaultLayout>
             </Route>
+
 
             <Route exact path='/add-ticket'>
               <DefaultLayout>
@@ -50,17 +49,25 @@ class App extends React.Component {
               </DefaultLayout>
             </Route>
 
+
+            <Route exact path="/ticket/:_id">
+              <DefaultLayout>
+                <SingleTicket />
+              </DefaultLayout>
+            </Route>
+
+
             <Route exact path='/tech'>
               <DefaultLayout>
                 <Tech />
               </DefaultLayout>
             </Route>
 
-            <Route exact path='/tech/:_id'>
+            {/* <Route exact path='/tech/:_id'>
               <DefaultLayout>
                 <SingleTech />
               </DefaultLayout>
-            </Route>
+            </Route> */}
 
             <Route exact path='/add-tech'>
               <DefaultLayout>
@@ -68,20 +75,13 @@ class App extends React.Component {
               </DefaultLayout>
             </Route>
 
+
             <Route exact path='/password-reset'>
               <PasswordOtpFormPage />
             </Route>
 
             <Route exact path="/register">
               <Registration />
-            </Route>
-
-            <Route exact path="/tickets/:tId">
-              <Ticket/>
-            </Route>
-
-            <Route exact path="/tickets">
-              <TicketLists/>
             </Route>
 
 

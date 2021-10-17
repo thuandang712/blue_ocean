@@ -26,7 +26,7 @@ const Header = () => {
 
                 {/* <img src={logo} alt='logo' width='175px' /> */}
 
-            <h1 id='title'>Tickets 'R' US</h1>
+                <h1 id='title'>Tickets 'R' US</h1>
 
             </Navbar.Brand>
             <Navbar.Toggle aria-controls='basic-navbar-nav' />

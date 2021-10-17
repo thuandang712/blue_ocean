@@ -61,13 +61,22 @@ router.post('/', adminAuth, async (req, res) => {
 })
 
 
-// update status of tech to unavailable
-router.patch('/:_id/status/unavailable', adminAuth, async (req, res) => {
+// update ticket array 
+router.patch('/:_id/update', adminAuth, async (req, res) => {
     try {
         const { _id } = req.params
-        const result = await techSchema.findOneAndUpdate(
+        // const result = await techSchema.findOneAndUpdate(
+        //     { _id },
+        //     { status: 'Unavailable' },
+        //     { new: true }
+        // )
+        const result = await techSchema.findByIdAndUpdate(
             { _id },
-            { status: 'Unavailable' },
+            {
+                $push: {
+                    tickets: { status: "Working" }
+                }
+            },
             { new: true }
         )
 
