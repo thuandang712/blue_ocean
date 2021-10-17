@@ -61,16 +61,16 @@ class Tech extends React.Component {
 
 
         return (
-            <Container>
+            <Container className='techPage mh-100 mw-100'>
                 <Row>
                     <Col>
-                        <h1>Tech Lists Page</h1>
+                        <h1 id='techTitle'> Tech List</h1>
                     </Col>
                 </Row>
                 <Row className="mt-4">
                     <Col>
                         <Link to="/add-tech">
-                            <Button variant="info">Add New Tech</Button>
+                            <Button id='addNewTechBTN'  data-toggle="button"> <div id='btnText'>Add New Tech</div> </Button>
                         </Link>
                     </Col>
                     <Col className="text-right">

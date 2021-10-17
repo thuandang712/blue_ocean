@@ -76,8 +76,48 @@
   margin-bottom: 1.5rem;
 }
 
-#almondText{
+.almondText{
   color:var(--color-schemeAlmond);
+}
+
+/*  -----/Header/----- */
+
+.headCont{
+  background-color: var(--color-schemeBlack);
+}
+
+/*  -----/Footer/----- */
+
+.footCont{
+  background-color: var(--color-schemeBlack);
+}
+
+
+/*  -----/tech/----- */
+
+#techTitle{
+color:var(--color-schemePurple);
+font-family: var(--font-family);
+font-size: 65px;
+font-style: italic;
+
+}
+
+#addNewTechBTN{
+  background-color:var(--color-schemeBlue);
+  color:var(--color-schemeBlack);
+  
+}
+
+.btnText{
+  font-family: var(--font-family);
+  font-weight: bold;
+}
+
+.techPage{
+background-color: var(--color-schemeBlack);
+
+
 }
 
 /*  -----/dashboard/----- */
@@ -89,7 +129,6 @@
 /*  -----/add-ticket/----- */
 
 
-/*  -----/tech/----- */
 
 
 /*  -----/tech/:_id/----- */

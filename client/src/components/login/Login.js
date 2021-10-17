@@ -35,6 +35,7 @@ const Login = () => {
         // TODO call api to check if email and pw matching the db
         const obj = { email, password }
         const resData = await adminLogin(obj)
+        console.log(resData)
 
         if (resData.status === "error") {
             return setisAuth(false)
