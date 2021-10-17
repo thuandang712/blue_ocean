@@ -15,7 +15,8 @@ class Tickets extends React.Component {
     state = {
         loading: false,
         tickets: [],
-        singleTicket: null
+        singleTicket: null,
+        filtered: null
     }
 
 
@@ -28,14 +29,14 @@ class Tickets extends React.Component {
 
 
     render() {
-        const { tickets } = this.state
+        const { tickets, filtered } = this.state
 
         // select single ticket 
         const selectSingleTicket = async (_id) => {
             console.log(_id)
             const res = await fetchSingleTicket(_id)
             console.log(res)
-            // this.setState({ singleTrainer: res.data })
+            this.setState({ singleTicket: res.data })
             // FILTER reviews belongs to the single trainer
             // const resReviews = await axios.get("http://localhost:5500/api/comments")
             // const rev = resReviews.data.filter(review => review.trainer_id === parseInt(id))
@@ -48,15 +49,24 @@ class Tickets extends React.Component {
         //     this.setState({ singleTrainer: null })
         // }
 
-        // delete tech
+        // delete ticket
         const deleteTicket = async (_id) => {
             // Delete in DB
             await deleteSingleTicket(_id)
             const res = await fetchTicket()
             this.setState({ tickets: [...res.ticket] })
-
             // Filter UI data THIS WILL NOT DELETE IN DB
             // this.setState({ techs: this.state.techs.filter(tech => tech._id !== _id) })
+        }
+
+
+        // search function 
+        const searchTicketBySubject = (text) => {
+            let filteredList = tickets.filter(ticket => {
+                let regexp = new RegExp(text, 'gi')
+                return ticket.subject.match(regexp)
+            })
+            this.setState({ filtered: filteredList })
         }
 
 
@@ -74,13 +84,13 @@ class Tickets extends React.Component {
                         </Link>
                     </Col>
                     <Col className="text-right">
-                        <SearchForm />
+                        <SearchForm searchTicketBySubject={searchTicketBySubject} />
                     </Col>
                 </Row>
 
                 <Row>
                     <Col>
-                        <TicketTable tickets={tickets} />
+                        <TicketTable tickets={tickets} filtered={filtered} deleteTicket={deleteTicket} />
                     </Col>
                 </Row>
             </Container>

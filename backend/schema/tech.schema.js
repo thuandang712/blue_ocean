@@ -5,7 +5,7 @@ const techSchema = new Schema({
     last_name: { type: String, maxLength: 20, required: true },
     phone_number: { type: Number, maxLength: 11 },
     email: { type: String, maxLength: 50, required: true, unique: true },
-    status: { type: String, maxLength: 50, required: true, default: 'Available' },
+
 
     tickets: [
         {

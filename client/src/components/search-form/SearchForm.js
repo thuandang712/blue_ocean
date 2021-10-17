@@ -3,12 +3,10 @@ import React from "react";
 import { Form, Row, Col } from "react-bootstrap";
 
 
-const SearchForm = () => {
+const SearchForm = ({ searchTicketBySubject }) => {
 
     const handleOnChange = (e) => {
-        // const { value } = e.target;
-
-        // filter search function
+        searchTicketBySubject(e.target.value)
     };
 
     return (
@@ -17,10 +15,8 @@ const SearchForm = () => {
                 <Form.Group as={Row}>
                     <Col >
                         <Form.Control
-                            // name="searchStr"
                             onChange={handleOnChange}
                             placeholder="Search..."
-                        // value={value}
                         />
                     </Col>
                 </Form.Group>

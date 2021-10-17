@@ -8,6 +8,7 @@
   display: grid;
   grid-template-rows: 150px auto 3rem;
   grid-template-areas: 'header' 'main' 'footer';
+
 }
 
 .header {
@@ -35,4 +36,18 @@
   cursor: pointer;
   transition: 1 ease;
   color:royalblue
+}
+
+
+
+.low-priority {
+  color: green;
+}
+
+.med-priority {
+  color: darkgoldenrod;
+}
+
+.high-priority {
+  color: red;
 }

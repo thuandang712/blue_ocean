@@ -27,7 +27,7 @@ class Tech extends React.Component {
 
 
     render() {
-        const { techs, singleTech } = this.state
+        const { techs } = this.state
 
 
         // select single trainer 
