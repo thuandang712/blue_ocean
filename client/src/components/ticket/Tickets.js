@@ -35,11 +35,11 @@ class Tickets extends React.Component {
             console.log(_id)
             const res = await fetchSingleTicket(_id)
             console.log(res)
-            // this.setState({ singleTrainer: res.data })
+            this.setState({ singleTrainer: res.data })
             // FILTER reviews belongs to the single trainer
             // const resReviews = await axios.get("http://localhost:5500/api/comments")
-            // const rev = resReviews.data.filter(review => review.trainer_id === parseInt(id))
-            // this.setState({ reviews: rev })
+            // // const rev = resReviews.data.filter(review => review.trainer_id === parseInt(id))
+            // // this.setState({ reviews: rev })
         }
 
 
@@ -82,6 +82,10 @@ class Tickets extends React.Component {
                     <Col>
                         <TicketTable tickets={tickets} />
                     </Col>
+                </Row>
+
+                <Row>
+                    <Col></Col>
                 </Row>
             </Container>
         )

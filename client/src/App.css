@@ -1,7 +1,16 @@
+:root{
+  --color-schemeBlue: #01a7c2;
+  --color-schemeGrey: #BCAC9B;
+  --color-schemeAlmond: #DDC9B4;
+  --color-schemeBlack: #2A3D45;
+  --color-schemePurple: #886176;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
 }
 
 .default-layout{
@@ -24,4 +33,114 @@
   background: black;
   color: #fff;
   padding: 1rem
+}
+
+#title{
+  font-family: 'Merriweather', serif;
+  transition: .5s ease;
+}
+
+#title:hover{
+  cursor: pointer;
+  transition: 1 ease;
+  color:royalblue
+}
+
+.login-form-btn {
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.5;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 1.5rem;
+}
+
+.message-history {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.message-history:nth-child(even) {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.message {
+  padding: 1rem;
+  width: 80%;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
+
+.createContainer {
+  text-decoration: darkorange;
+}
+
+.searchBtn {
+  text-decoration: darkslategrey;
+}
+
+.ticketsContainer {
+  padding-top: 50px;
+  border: darkred;
+  border-radius: 3px, red;
+}
+
+.statusColors1 {
+  text-decoration: red;
+}
+.statusColors2 {
+  text-decoration: blue;
+}
+.statusColors3 {
+  text-decoration: green;
+  text-shadow: green;
+  text-align: justify;
+}
+
+.entry-page {
+  height: 100vh;
+}
+
+
+.title {
+  margin-top: 200px;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.btn-container {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.resetPassword-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-box {
+  box-shadow: 0px 0px 15px -5px black;
+}
+
+.registration-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-box {
+  box-shadow: 0px 0px 15px -5px black;
 }
