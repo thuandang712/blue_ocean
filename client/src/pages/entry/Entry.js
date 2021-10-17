@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
-import './entry.style.css'
+// import './entry.style.css'
 
 const Entry = () => {
     return (
+        <container>
         <div className='entry-page'>
             <h1 className='title'>Welcome to the ticketing system!</h1>
             <div className='btn-container'>
@@ -16,6 +17,7 @@ const Entry = () => {
                 </Link> */}
             </div>
         </div>
+        </container>
     )
 }
 
