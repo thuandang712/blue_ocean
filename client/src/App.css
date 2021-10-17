@@ -174,18 +174,19 @@ background-color: var(--color-schemeBlack);
 }
 
 
-
+.high-priority {
+  color: red;
+}
+.med-priority {
+  color: darkgoldenrod;
+}
 .low-priority {
   color: green;
 }
 
-.med-priority {
-  color: darkgoldenrod;
-}
 
-.high-priority {
-  color: red;
-}
+
+
 
 .login-form-btn {
   font-size: 16px;
@@ -285,3 +286,29 @@ background-color: var(--color-schemeBlack);
 .form-box {
   box-shadow: 0px 0px 15px -5px black;
 }
+
+.createContainer {
+  text-decoration: darkorange;
+}
+
+.searchBtn {
+  text-decoration: darkslategrey;
+}
+
+/* .ticketsContainer {
+  padding-top: 50px;
+  border: darkred;
+  border-radius: 3px, red;
+}
+
+.statusColors1 {
+  text-decoration: red;
+}
+.statusColors2 {
+  text-decoration: blue;
+}
+.statusColors3 {
+  text-decoration: green;
+  text-shadow: green;
+  text-align: justify;
+} */

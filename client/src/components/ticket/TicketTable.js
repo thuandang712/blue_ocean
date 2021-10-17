@@ -1,9 +1,6 @@
 import React from 'react'
-import MarkButton from './MarkButton'
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Button } from 'react-bootstrap'
-
 
 
 const priorityLevel = (lvl) => {
@@ -19,19 +16,8 @@ const priorityLevel = (lvl) => {
     }
 }
 
+
 const TicketTable = ({ tickets, filtered, deleteTicket }) => {
-
-    const handleChangeStatus = (e) => {
-        e.preventDefault()
-        console.log(e.target.id)
-        // console.log(tickets.filter(row => row._id = e.target.id))
-
-        // row.status !== 'Resolved' ? row.status = 'Resolved' : row.status = 'Open'
-
-
-
-    }
-
 
 
     if (filtered !== null) {
@@ -60,19 +46,15 @@ const TicketTable = ({ tickets, filtered, deleteTicket }) => {
                             <td>{row.type}</td>
                             <td>{row.createdAt && new Date(row.createdAt).toLocaleString()}</td>
                             <td>
-                                <Link to={`/ticket/${row._id}`}>Edit</Link>
+                                <Link to={`/ticket/${row._id}/edit`}><Button className='edit-btn' variant="outline-primary" size='sm'>Edit</Button></Link>
                                 <br></br>
-                                {/* <a href="#" onClick={() => {
-                                    if (window.confirm('Are you sure you want to delete this ticket?'))
-                                        this.props.deleteTicket(this.props.ticket._id)
-                                }}
-                                >Delete</a> */}
-                                <br></br>
-
-                                {/* <MarkButton
-                                    mark={this.props.ticket.status}
-                                    ticketID={this.props.ticket._id}
-                                /> */}
+                                <Link to='#'>
+                                    <Button className='delete-btn' variant="outline-danger" size='sm' onClick={() => {
+                                        if (window.confirm('Are you sure you want to delete this ticket?'))
+                                            deleteTicket(row._id)
+                                    }}
+                                    >Delete</Button>
+                                </Link>
                             </td>
                         </tr>
                     ))}
@@ -109,10 +91,8 @@ const TicketTable = ({ tickets, filtered, deleteTicket }) => {
                             <td>{row.type}</td>
                             <td>{row.createdAt && new Date(row.createdAt).toLocaleString()}</td>
                             <td>
-                                <Link to={`/ticket/${row._id}`}><Button className='edit-btn' variant="outline-primary" size='sm'>Edit</Button></Link>
-
+                                <Link to={`/ticket/edit/${row._id}`}><Button className='edit-btn' variant="outline-primary" size='sm'>Edit</Button></Link>
                                 <br></br>
-
                                 <Link to='#'>
                                     <Button className='delete-btn' variant="outline-danger" size='sm' onClick={() => {
                                         if (window.confirm('Are you sure you want to delete this ticket?'))
@@ -120,13 +100,6 @@ const TicketTable = ({ tickets, filtered, deleteTicket }) => {
                                     }}
                                     >Delete</Button>
                                 </Link>
-
-                                <br></br>
-
-                                {row.status !== 'Resolved' ?
-                                    <Button id={row._id} onClick={handleChangeStatus} variant="outline-success" size='sm'>Mark as Resolved</Button> :
-                                    <Button id={row._id} onClick={handleChangeStatus} variant="outline-success" size='sm'>Mark as Open</Button>}
-
                             </td>
                         </tr>
                     ))

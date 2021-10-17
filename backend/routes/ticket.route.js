@@ -61,49 +61,74 @@ router.post('/', adminAuth, async (req, res) => {
 })
 
 
-// update status of ticket to working
-router.patch('/:_id/status/inprogress', adminAuth, async (req, res) => {
-    try {
-        const { _id } = req.params
-        const result = await ticketSchema.findOneAndUpdate(
-            { _id },
-            { status: 'In progress' },
-            { new: true }
-        )
+// update status of ticket to open
+// router.patch('/:_id/status/open', adminAuth, async (req, res) => {
+//     try {
+//         const { _id } = req.params
+//         const result = await ticketSchema.findOneAndUpdate(
+//             { _id },
+//             { status: 'Open' },
+//             { new: true }
+//         )
 
-        if (result._id) {
-            return res.status(200).json({ status: "success", message: "Ticket status updated successfully to In Progress", result });
-        }
+//         if (result._id) {
+//             return res.status(200).json({ status: "success", message: "Ticket status updated successfully to Open", result });
+//         }
 
-        res.json({ status: 'error', message: 'Unable to update status' })
+//         res.json({ status: 'error', message: 'Unable to update status' })
 
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({ status: "error", message: error.message })
-    }
-})
+//     } catch (error) {
+//         console.log(error)
+//         res.status(500).json({ status: "error", message: error.message })
+//     }
+// })
 
-// update status of ticket to done
-router.patch('/:_id/status/resolved', adminAuth, async (req, res) => {
-    try {
-        const { _id } = req.params
-        const result = await ticketSchema.findOneAndUpdate(
-            { _id },
-            { status: 'Resolved' },
-            { new: true }
-        )
 
-        if (result._id) {
-            return res.status(200).json({ status: "success", message: "Ticket status updated successfully to Resolved", result });
-        }
 
-        res.json({ status: 'error', message: 'Unable to update status' })
 
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({ status: "error", message: error.message })
-    }
-})
+// // update status of ticket to working
+// router.patch('/:_id/status/inprogress', adminAuth, async (req, res) => {
+//     try {
+//         const { _id } = req.params
+//         const result = await ticketSchema.findOneAndUpdate(
+//             { _id },
+//             { status: 'In Progress' },
+//             { new: true }
+//         )
+
+//         if (result._id) {
+//             return res.status(200).json({ status: "success", message: "Ticket status updated successfully to In Progress", result });
+//         }
+
+//         res.json({ status: 'error', message: 'Unable to update status' })
+
+//     } catch (error) {
+//         console.log(error)
+//         res.status(500).json({ status: "error", message: error.message })
+//     }
+// })
+
+// // update status of ticket to done
+// router.patch('/:_id/status/resolved', adminAuth, async (req, res) => {
+//     try {
+//         const { _id } = req.params
+//         const result = await ticketSchema.findOneAndUpdate(
+//             { _id },
+//             { status: 'Resolved' },
+//             { new: true }
+//         )
+
+//         if (result._id) {
+//             return res.status(200).json({ status: "success", message: "Ticket status updated successfully to Resolved", result });
+//         }
+
+//         res.json({ status: 'error', message: 'Unable to update status' })
+
+//     } catch (error) {
+//         console.log(error)
+//         res.status(500).json({ status: "error", message: error.message })
+//     }
+// })
 
 
 

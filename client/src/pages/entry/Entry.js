@@ -5,7 +5,6 @@ import { Button } from 'react-bootstrap'
 
 const Entry = () => {
     return (
-        <container>
         <div className='entry-page'>
             <h1 className='title'>Welcome to the ticketing system!</h1>
             <div className='btn-container'>
@@ -17,7 +16,6 @@ const Entry = () => {
                 </Link> */}
             </div>
         </div>
-        </container>
     )
 }
 

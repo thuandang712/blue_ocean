@@ -76,23 +76,18 @@ export const deleteSingleTech = async (_id) => {
 }
 
 
-// export const updateTicketArrayInTech = async (_id, obj) => {
-//   try {
-//     const res = await axios.patch(
-//       techURL + `/${_id}` + `/update`,
-//       obj,
-//       {
-//         headers: {
-//           Authorization: sessionStorage.getItem("accessJWT"),
-//         },
-//       }
-//     );
+export const updateSingleTech = async (_id, obj) => {
+  try {
+    const res = await axios.patch(techURL + `/${_id}`, obj, {
+      headers: {
+        Authorization: sessionStorage.getItem("accessJWT"),
+      },
+    });
 
-//     return res.data
+    return res.data;
 
-//   } catch (error) {
-//     console.log(error);
-//     return error
-//   }
-
-// };
+  } catch (error) {
+    console.log(error)
+    return error
+  }
+}

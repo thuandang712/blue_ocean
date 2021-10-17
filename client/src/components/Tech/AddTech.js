@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Container, Form, Jumbotron, Row, Col, Button, Alert } from "react-bootstrap";
 import { createTech } from '../../api/tech.api';
+import DefaultLayout from '../../layout/DefaultLayout';
 
 
 class AddTech extends React.Component {
@@ -16,7 +17,6 @@ class AddTech extends React.Component {
         message: ''
     }
 
-    // useEffect()
 
     render() {
 
@@ -52,97 +52,99 @@ class AddTech extends React.Component {
 
 
         return (
-            <Container>
-                <Jumbotron className="mt-3 add-new-ticket bg-light">
-                    <Row>
-                        <Col>
-                            <h1 className="text-info text-center mb-2">Add New Tech</h1>
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Col>
-                            {message && (
-                                <Alert variant={status === "success" ? "success" : "danger"}>
-                                    {message}
-                                </Alert>
-                            )}
-                        </Col>
-                    </Row>
-
-                    <Form autoComplete="off" onSubmit={handleOnSubmit}>
-                        <Form.Group as={Row}>
-                            <Form.Label column sm={3}>First Name</Form.Label>
-                            <Col sm={9}>
-                                <Form.Control
-                                    name="first_name"
-                                    value={first_name}
-                                    maxLength="50"
-                                    onChange={handleOnChange}
-                                    placeholder="First Name"
-                                    required
-                                />
-                                <Form.Text className="text-danger">
-                                </Form.Text>
+            <DefaultLayout>
+                <Container>
+                    <Jumbotron className="mt-3 add-new-ticket bg-light">
+                        <Row>
+                            <Col>
+                                <h1 className="text-info text-center mb-2">Add New Tech</h1>
                             </Col>
-                        </Form.Group>
+                        </Row>
 
-                        <Form.Group as={Row}>
-                            <Form.Label column sm={3}>Last Name</Form.Label>
-                            <Col sm={9}>
-                                <Form.Control
-                                    name="last_name"
-                                    value={last_name}
-                                    maxLength="50"
-                                    onChange={handleOnChange}
-                                    placeholder="Last Name"
-                                    required
-                                />
-                                <Form.Text className="text-danger">
-                                </Form.Text>
+                        <Row>
+                            <Col>
+                                {message && (
+                                    <Alert variant={status === "success" ? "success" : "danger"}>
+                                        {message}
+                                    </Alert>
+                                )}
                             </Col>
-                        </Form.Group>
+                        </Row>
 
-                        <Form.Group as={Row}>
-                            <Form.Label column sm={3}>Phone Number</Form.Label>
-                            <Col sm={9}>
-                                <Form.Control
-                                    name="phone_number"
-                                    value={phone_number}
-                                    maxLength="11"
-                                    onChange={handleOnChange}
-                                    placeholder="Phone Number"
-                                    required
-                                />
-                                <Form.Text className="text-danger">
-                                </Form.Text>
-                            </Col>
-                        </Form.Group>
+                        <Form autoComplete="off" onSubmit={handleOnSubmit}>
+                            <Form.Group as={Row}>
+                                <Form.Label column sm={3}>First Name</Form.Label>
+                                <Col sm={9}>
+                                    <Form.Control
+                                        name="first_name"
+                                        value={first_name}
+                                        maxLength="50"
+                                        onChange={handleOnChange}
+                                        placeholder="First Name"
+                                        required
+                                    />
+                                    <Form.Text className="text-danger">
+                                    </Form.Text>
+                                </Col>
+                            </Form.Group>
+
+                            <Form.Group as={Row}>
+                                <Form.Label column sm={3}>Last Name</Form.Label>
+                                <Col sm={9}>
+                                    <Form.Control
+                                        name="last_name"
+                                        value={last_name}
+                                        maxLength="50"
+                                        onChange={handleOnChange}
+                                        placeholder="Last Name"
+                                        required
+                                    />
+                                    <Form.Text className="text-danger">
+                                    </Form.Text>
+                                </Col>
+                            </Form.Group>
+
+                            <Form.Group as={Row}>
+                                <Form.Label column sm={3}>Phone Number</Form.Label>
+                                <Col sm={9}>
+                                    <Form.Control
+                                        name="phone_number"
+                                        value={phone_number}
+                                        maxLength="11"
+                                        onChange={handleOnChange}
+                                        placeholder="Phone Number"
+                                        required
+                                    />
+                                    <Form.Text className="text-danger">
+                                    </Form.Text>
+                                </Col>
+                            </Form.Group>
 
 
-                        <Form.Group as={Row}>
-                            <Form.Label column sm={3}>Email</Form.Label>
-                            <Col sm={9}>
-                                <Form.Control
-                                    type="email"
-                                    name="email"
-                                    value={email}
-                                    maxLength="50"
-                                    onChange={handleOnChange}
-                                    placeholder="Email"
-                                    required
-                                />
-                                <Form.Text className="text-danger">
-                                </Form.Text>
-                            </Col>
-                        </Form.Group>
+                            <Form.Group as={Row}>
+                                <Form.Label column sm={3}>Email</Form.Label>
+                                <Col sm={9}>
+                                    <Form.Control
+                                        type="email"
+                                        name="email"
+                                        value={email}
+                                        maxLength="50"
+                                        onChange={handleOnChange}
+                                        placeholder="Email"
+                                        required
+                                    />
+                                    <Form.Text className="text-danger">
+                                    </Form.Text>
+                                </Col>
+                            </Form.Group>
 
-                        <Button type="submit" variant="info" block>
-                            Add Tech
-                        </Button>
-                    </Form>
-                </Jumbotron>
-            </Container>
+                            <Button type="submit" variant="info" block>
+                                Add Tech
+                            </Button>
+                        </Form>
+                    </Jumbotron>
+                </Container>
+            </DefaultLayout>
         )
     }
 }

@@ -62,46 +62,46 @@ router.post('/', adminAuth, async (req, res) => {
 
 
 // update ticket array 
-router.patch('/:_id/update', adminAuth, async (req, res) => {
-    try {
-        const { _id } = req.params
-        // const result = await techSchema.findOneAndUpdate(
-        //     { _id },
-        //     { status: 'Unavailable' },
-        //     { new: true }
-        // )
-        const result = await techSchema.findByIdAndUpdate(
-            { _id },
-            {
-                $push: {
-                    tickets: { status: "Working" }
-                }
-            },
-            { new: true }
-        )
+// router.patch('/:_id/update', adminAuth, async (req, res) => {
+//     try {
+//         const { _id } = req.params
+//         // const result = await techSchema.findOneAndUpdate(
+//         //     { _id },
+//         //     { status: 'Unavailable' },
+//         //     { new: true }
+//         // )
+//         const result = await techSchema.findByIdAndUpdate(
+//             { _id },
+//             {
+//                 $push: {
+//                     tickets: { status: "Working" }
+//                 }
+//             },
+//             { new: true }
+//         )
 
-        if (result._id) {
-            return res.status(200).json({ status: "success", message: "Tech status updated successfully", result });
-        }
+//         if (result._id) {
+//             return res.status(200).json({ status: "success", message: "Tech status updated successfully", result });
+//         }
 
-        res.json({ status: 'error', message: 'Unable to update status' })
+//         res.json({ status: 'error', message: 'Unable to update status' })
 
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({ status: "error", message: error.message })
-    }
-})
+//     } catch (error) {
+//         console.log(error)
+//         res.status(500).json({ status: "error", message: error.message })
+//     }
+// })
 
 
 // update tech details
 router.patch('/:_id', adminAuth, async (req, res) => {
     try {
         const { _id } = req.params
-        const { first_name, last_name, phone_number, email } = req.body
+        const { first_name, last_name, phone_number } = req.body
 
         const result = await techSchema.findOneAndUpdate(
             { _id },
-            { first_name, last_name, phone_number, email },
+            { first_name, last_name, phone_number },
             { new: true }
         )
 
