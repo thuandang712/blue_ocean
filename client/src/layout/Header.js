@@ -24,7 +24,7 @@ const Header = () => {
         <Navbar collapseOnSelect variant='dark' bg='dark' expand='md'>
             <Navbar.Brand className="ms-5 my-2">
 
-                <img src={logo} alt='logo' width='175px' />
+                {/* <img src={logo} alt='logo' width='175px' /> */}
 
             <h1 id='title'>Tickets 'R' US</h1>
 
