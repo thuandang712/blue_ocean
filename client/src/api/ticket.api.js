@@ -75,3 +75,18 @@ export const deleteSingleTicket = async (_id) => {
 }
 
 
+export const updateSingleTicket = async (_id, obj) => {
+    try {
+        const res = await axios.patch(ticketURL + `/${_id}`, obj, {
+            headers: {
+                Authorization: sessionStorage.getItem("accessJWT"),
+            },
+        });
+
+        return res.data;
+
+    } catch (error) {
+        console.log(error)
+        return error
+    }
+}

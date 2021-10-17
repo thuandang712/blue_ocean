@@ -2,11 +2,11 @@ import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { Link } from "react-router-dom";
 
-import { fetchTicket, fetchSingleTicket, deleteSingleTicket } from '../../api/ticket.api';
+import { fetchTicket, deleteSingleTicket } from '../../api/ticket.api';
 
 import SearchForm from '../search-form/SearchForm'
 import TicketTable from './TicketTable'
-import "./tickets.css"
+import DefaultLayout from '../../layout/DefaultLayout';
 
 
 
@@ -31,23 +31,6 @@ class Tickets extends React.Component {
     render() {
         const { tickets, filtered } = this.state
 
-        // select single ticket 
-        const selectSingleTicket = async (_id) => {
-            console.log(_id)
-            const res = await fetchSingleTicket(_id)
-            console.log(res)
-            this.setState({ singleTicket: res.data })
-            // FILTER reviews belongs to the single trainer
-            // const resReviews = await axios.get("http://localhost:5500/api/comments")
-            // const rev = resReviews.data.filter(review => review.trainer_id === parseInt(id))
-            // this.setState({ reviews: rev })
-        }
-
-
-        // clear single trainer 
-        // const clearSingleTech = () => {
-        //     this.setState({ singleTrainer: null })
-        // }
 
         // delete ticket
         const deleteTicket = async (_id) => {
@@ -71,29 +54,31 @@ class Tickets extends React.Component {
 
 
         return (
-            <Container>
-                <Row>
-                    <Col>
-                        <h1>Ticket Lists Page</h1>
-                    </Col>
-                </Row>
-                <Row className="mt-4 mb-4">
-                    <Col>
-                        <Link to="/add-ticket">
-                            <Button variant="info">Add New Ticket</Button>
-                        </Link>
-                    </Col>
-                    <Col className="text-right">
-                        <SearchForm searchTicketBySubject={searchTicketBySubject} />
-                    </Col>
-                </Row>
+            <DefaultLayout>
+                <Container>
+                    <Row>
+                        <Col>
+                            <h1>Ticket Lists Page</h1>
+                        </Col>
+                    </Row>
+                    <Row className="mt-4 mb-4">
+                        <Col>
+                            <Link to="/add-ticket">
+                                <Button variant="info">Add New Ticket</Button>
+                            </Link>
+                        </Col>
+                        <Col className="text-right">
+                            <SearchForm searchTicketBySubject={searchTicketBySubject} />
+                        </Col>
+                    </Row>
 
-                <Row>
-                    <Col>
-                        <TicketTable tickets={tickets} filtered={filtered} deleteTicket={deleteTicket} />
-                    </Col>
-                </Row>
-            </Container>
+                    <Row>
+                        <Col>
+                            <TicketTable tickets={tickets} filtered={filtered} deleteTicket={deleteTicket} />
+                        </Col>
+                    </Row>
+                </Container>
+            </DefaultLayout>
         )
     }
 }
