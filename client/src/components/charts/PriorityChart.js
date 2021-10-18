@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import { fetchTicket } from '../../api/ticket.api';
 import { Bar } from 'react-chartjs-2';
 
