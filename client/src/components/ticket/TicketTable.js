@@ -2,7 +2,6 @@ import React from 'react'
 import { Table, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-
 const priorityLevel = (lvl) => {
     switch (lvl) {
         case 'Low':

@@ -7,6 +7,7 @@ import Entry from './pages/entry/Entry';
 import Login from './components/login/Login';
 import Registration from "./pages/registration/registrationPage";
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
+import Dashboard from './pages/dashboard/Dashboard'
 import Tech from './components/tech/Tech'
 import AddTech from './components/tech/AddTech'
 import SingleTech from './components/tech/SingleTech'
@@ -26,6 +27,8 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/' component={Entry}></Route>
             <Route exact path='/login' component={Login}></Route>
+
+            <Route exact path='/dashboard' component={Dashboard}></Route>
 
             <Route exact path='/ticket' component={Tickets}></Route>
             <Route exact path='/add-ticket' component={AddTicket}></Route>
