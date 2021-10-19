@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const rootUrl = "https://blue-ocean-ticketing-system.herokuapp.com/api/";
-const ticketURL = rootUrl + "ticket"
+const ticketURL = "/api/ticket"
 
 
 export const fetchTicket = async () => {

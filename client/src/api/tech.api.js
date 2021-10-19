@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const rootUrl = "https://blue-ocean-ticketing-system.herokuapp.com/api/";
-const techURL = rootUrl + "tech";
+const techURL = "/api/tech";
 
 
 

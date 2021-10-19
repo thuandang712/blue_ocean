@@ -1,8 +1,7 @@
 import axios from "axios";
 
-const rootUrl = "https://blue-ocean-ticketing-system.herokuapp.com/api/";
-const adminLoginUrl = rootUrl + "admin/login";
-const adminLogoutUrl = rootUrl + "admin/logout";
+const adminLoginUrl = "/api/admin/login";
+const adminLogoutUrl = "/api/admin/logout";
 
 
 export const adminLogin = async obj => {
