@@ -2,18 +2,14 @@ import React from 'react'
 import { Navbar, Nav, Container } from 'react-bootstrap'
 import { useHistory } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-import axios from 'axios'
+import { adminLogout } from '../api/admin.api';
 
 
 const Header = () => {
     const history = useHistory();
 
     const logMeOut = async () => {
-        await axios.delete('http://localhost:5000/api/admin/logout', {
-            headers: {
-                Authorization: sessionStorage.getItem("accessJWT"),
-            },
-        });
+        await adminLogout()
         sessionStorage.removeItem("accessJWT");
         localStorage.removeItem("crmSite");
         history.push("/login");
