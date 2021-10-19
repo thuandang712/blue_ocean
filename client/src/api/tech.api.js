@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const rootUrl = "http://localhost:5000/api/";
-const techURL = rootUrl + "tech";
+const techURL = "/api/tech";
 
 
 

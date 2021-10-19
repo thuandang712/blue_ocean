@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const rootUrl = "http://localhost:5000/api/";
-const ticketURL = rootUrl + "ticket"
+const ticketURL = "/api/ticket"
 
 
 export const fetchTicket = async () => {
