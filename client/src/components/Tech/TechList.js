@@ -7,7 +7,7 @@ import TechItem from './TechItem';
 
 
 
-class Tech extends React.Component {
+class TechList extends React.Component {
 
     state = {
         loading: false,
@@ -68,4 +68,4 @@ class Tech extends React.Component {
     };
 }
 
-export default Tech
+export default TechList

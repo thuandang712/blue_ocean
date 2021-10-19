@@ -8,7 +8,7 @@ import Login from './components/login/Login';
 import Registration from "./pages/registration/registrationPage";
 import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
 import Dashboard from './pages/dashboard/Dashboard'
-import Tech from './components/tech/Tech'
+import TechList from './components/tech/TechList'
 import AddTech from './components/tech/AddTech'
 import SingleTech from './components/tech/SingleTech'
 import Tickets from './components/ticket/Tickets';
@@ -34,7 +34,7 @@ class App extends React.Component {
             <Route exact path='/add-ticket' component={AddTicket}></Route>
             <Route exact path="/ticket/edit/:_id" component={SingleTicket}></Route>
 
-            <Route exact path='/tech' component={Tech}></Route>
+            <Route exact path='/tech' component={TechList}></Route>
             <Route exact path='/add-tech' component={AddTech}></Route>
             <Route exact path='/tech/edit/:_id' component={SingleTech}></Route>
 
