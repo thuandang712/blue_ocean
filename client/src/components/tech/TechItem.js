@@ -9,24 +9,20 @@ import { FaTrash, FaEdit } from 'react-icons/fa'
 
 const TechItem = ({ tech, deleteTech }) => {
 
-    const handleDelete = (e) => {
-        if (window.confirm('Are you sure you want to delete this tech?')) {
-            deleteTech(e.target.id)
-        }
-    }
-
 
     return (
         <Col>
             <Card>
                 <ListGroup variant="flush">
-                    <ListGroup.Item className='tech-name'>{`${tech.first_name} ${tech.last_name}`}</ListGroup.Item>
+                    <ListGroup.Item id={tech._id} className='tech-name'>{`${tech.first_name} ${tech.last_name}`}</ListGroup.Item>
                     <ListGroup.Item className='tech-phone'><BsFillTelephoneFill /> {tech.phone_number}</ListGroup.Item>
                     <ListGroup.Item className='tech-mail'><FiMail /> {tech.email}</ListGroup.Item>
                     <ListGroup.Item className='tech-action ms-auto'>
                         <Link to='#'>
-                            <Button className='delete-btn' size='sm' variant="outline-danger"
-                                id={tech._id} onClick={handleDelete}>
+                            <Button variant="outline-danger" size='sm' onClick={() => {
+                                if (window.confirm('Are you sure you want to delete this ticket?'))
+                                    deleteTech(tech._id)
+                            }}>
                                 <FaTrash />
                             </Button>
                         </Link>
