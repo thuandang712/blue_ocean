@@ -1,6 +1,8 @@
 import React from 'react'
 import { Table, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { FaTrash, FaEdit } from 'react-icons/fa'
+
 
 const priorityLevel = (lvl) => {
     switch (lvl) {
@@ -45,15 +47,16 @@ const TicketTable = ({ tickets, filtered, deleteTicket }) => {
                             <td>{row.type}</td>
                             <td>{row.createdAt && new Date(row.createdAt).toLocaleString()}</td>
                             <td>
-                                <Link to={`/ticket/${row._id}/edit`}><Button className='edit-btn' variant="outline-primary" size='sm'>Edit</Button></Link>
-                                <br></br>
+                                <Link to={`/ticket/edit/${row._id}`}><Button variant="outline-success" size='sm'><FaEdit /></Button></Link>
+
                                 <Link to='#'>
-                                    <Button className='delete-btn' variant="outline-danger" size='sm' onClick={() => {
+                                    <Button variant="outline-danger" size='sm' onClick={() => {
                                         if (window.confirm('Are you sure you want to delete this ticket?'))
                                             deleteTicket(row._id)
                                     }}
-                                    >Delete</Button>
+                                    ><FaTrash /></Button>
                                 </Link>
+
                             </td>
                         </tr>
                     ))}
@@ -90,14 +93,14 @@ const TicketTable = ({ tickets, filtered, deleteTicket }) => {
                             <td>{row.type}</td>
                             <td>{row.createdAt && new Date(row.createdAt).toLocaleString()}</td>
                             <td>
-                                <Link to={`/ticket/edit/${row._id}`}><Button className='edit-btn' variant="outline-primary" size='sm'>Edit</Button></Link>
-                                <br></br>
+                                <Link to={`/ticket/edit/${row._id}`}><Button variant="outline-success" size='sm' ><FaEdit /></Button></Link>
+
                                 <Link to='#'>
-                                    <Button className='delete-btn' variant="outline-danger" size='sm' onClick={() => {
+                                    <Button variant="outline-danger" size='sm' className='ml-2' onClick={() => {
                                         if (window.confirm('Are you sure you want to delete this ticket?'))
                                             deleteTicket(row._id)
                                     }}
-                                    >Delete</Button>
+                                    ><FaTrash /></Button>
                                 </Link>
                             </td>
                         </tr>
