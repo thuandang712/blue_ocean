@@ -83,9 +83,15 @@ const Login = () => {
                 </Col>
             </Row>
 
+            <Row className="mx-auto w-50 mt-3">
+                <Col>
+                    <Link to="/">Back to home page</Link>
+                </Col >
+            </Row >
+
 
             {isAuth === false &&
-                <Row className="mx-auto w-50 h-50">
+                <Row className="mx-auto w-50 h-50 mt-3">
                     <Col>
                         <Alert variant="danger">Invalid Email or Password!</Alert>
                     </Col>
@@ -103,12 +109,6 @@ const Login = () => {
                     <div>Don't have an account yet?</div> <a href="/register">Register Now</a>
                 </Col>
             </Row> */}
-
-            <Row className="mx-auto w-50 mt-3">
-                <Col>
-                    <Link to="/">Back to home page</Link>
-                </Col >
-            </Row >
         </div >
     )
 }

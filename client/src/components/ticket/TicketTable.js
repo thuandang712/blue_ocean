@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaTrash, FaEdit } from 'react-icons/fa'
 
@@ -18,103 +18,30 @@ const priorityLevel = (lvl) => {
 }
 
 
-const TicketTable = ({ tickets, filtered, deleteTicket }) => {
-
-
-    if (filtered !== null) {
-        return (
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Subject</th>
-                        <th>Description</th>
-                        <th>Assigned To</th>
-                        <th>Priority</th>
-                        <th>Status</th>
-                        <th>Type</th>
-                        <th>Opened Date</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filtered.map((row) => (
-                        <tr key={row._id}>
-                            <td>{row.subject}</td>
-                            <td>{row.description}</td>
-                            <td>{row.assignee}</td>
-                            {priorityLevel(row.priority)}
-                            <td>{row.status}</td>
-                            <td>{row.type}</td>
-                            <td>{row.createdAt && new Date(row.createdAt).toLocaleString()}</td>
-                            <td>
-                                <Link to={`/ticket/edit/${row._id}`}><Button variant="outline-success" size='sm'><FaEdit /></Button></Link>
-
-                                <Link to='#'>
-                                    <Button variant="outline-danger" size='sm' onClick={() => {
-                                        if (window.confirm('Are you sure you want to delete this ticket?'))
-                                            deleteTicket(row._id)
-                                    }}
-                                    ><FaTrash /></Button>
-                                </Link>
-
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </Table>
-        )
-    }
-
-
+const TicketTable = ({ ticket, deleteTicket }) => {
 
     return (
-        <Table striped bordered hover>
-            <thead>
-                <tr>
-                    <th>Subject</th>
-                    <th>Description</th>
-                    <th>Assigned To</th>
-                    <th>Priority</th>
-                    <th>Status</th>
-                    <th>Type</th>
-                    <th>Opened Date</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {tickets.length ? (
-                    tickets.map((row) => (
-                        <tr key={row._id}>
-                            <td>{row.subject}</td>
-                            <td>{row.description}</td>
-                            <td>{row.assignee}</td>
-                            {priorityLevel(row.priority)}
-                            <td>{row.status}</td>
-                            <td>{row.type}</td>
-                            <td>{row.createdAt && new Date(row.createdAt).toLocaleString()}</td>
-                            <td>
-                                <Link to={`/ticket/edit/${row._id}`}><Button variant="outline-success" size='sm' ><FaEdit /></Button></Link>
+        <tr>
+            <td>{ticket.subject}</td>
+            <td>{ticket.description}</td>
+            <td>{ticket.assignee}</td>
+            {priorityLevel(ticket.priority)}
+            <td>{ticket.status}</td>
+            <td>{ticket.type}</td>
+            <td>{ticket.createdAt && new Date(ticket.createdAt).toLocaleString()}</td>
+            <td>
+                <Link to={`/ticket/edit/${ticket._id}`}><Button variant="outline-success" size='sm' ><FaEdit /></Button></Link>
 
-                                <Link to='#'>
-                                    <Button variant="outline-danger" size='sm' className='ml-2' onClick={() => {
-                                        if (window.confirm('Are you sure you want to delete this ticket?'))
-                                            deleteTicket(row._id)
-                                    }}
-                                    ><FaTrash /></Button>
-                                </Link>
-                            </td>
-                        </tr>
-                    ))
-                ) : (
-                    <tr>
-                        <td colSpan="4" className="text-center">
-                            No ticket show{" "}
-                        </td>
-                    </tr>
-                )}
-            </tbody>
-        </Table>
-
+                <Link to='#'>
+                    <Button variant="outline-danger" size='sm' onClick={() => {
+                        if (window.confirm('Are you sure you want to delete this ticket?'))
+                            deleteTicket(ticket._id)
+                    }}>
+                        <FaTrash />
+                    </Button>
+                </Link>
+            </td>
+        </tr>
     )
 }
 
