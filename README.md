@@ -30,11 +30,15 @@ password we have created.
 
 ### III. Dashboard
 
+![Screenshot (1228)](https://user-images.githubusercontent.com/85899437/138168822-ee00e372-3a2e-4975-bee9-258240928cf1.png)
+
 This page will display three charts that accurately reflect and are designed to assist the admin in
 establishing priorities, and make decisions about what problems are facing the company
 internally.
 
 ### III. Tech
+
+![Screenshot (1229)](https://user-images.githubusercontent.com/85899437/138168959-5eaca00f-d2ab-47dc-8851-9ad989fe9a30.png)
 
 This tech page allows the administrator to create, update and delete information about
 technicians within the organization. This will enable administrators to adjust the technicians that
@@ -44,6 +48,8 @@ updated. Within the scope of our project we did not have any previously establis
 pull from.
 
 ### IV. Ticket
+
+![Screenshot (1230)](https://user-images.githubusercontent.com/85899437/138168892-0a2c03fc-de4e-4a01-9320-f0f77d5b82b6.png)
 
 The ticket page enables the administrator to see all of the tickets that are currently open within
 the organization. The headers and critical details for the tickets are as follows:
