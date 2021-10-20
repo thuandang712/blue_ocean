@@ -39,6 +39,7 @@ class App extends React.Component {
             <Route exact path='/tech/edit/:_id' component={SingleTech}></Route>
 
             <Route exact path='/password-reset' component={PasswordOtpFormPage}></Route>
+
             <Route exact path="/register" component={Registration}></Route>
           </Switch>
         </Router>
