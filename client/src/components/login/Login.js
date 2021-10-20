@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap'
+import { Row, Col, Form, Button, Alert } from 'react-bootstrap'
 import { useHistory, useLocation, Link } from "react-router-dom";
 import { adminLogin } from '../../api/admin.api';
 import '../../App.css'
@@ -47,12 +47,12 @@ const Login = () => {
 
 
     return (
-        <Container className="loginPage">
+        <div className='loginPage'>
             <Row className="mx-auto w-50">
                 <Col>
                     <h1 className="login-title">Admin Login</h1>
                     <Form autoComplete="on" onSubmit={handleOnSubmit}>
-                        <Form.Group className="mb-3">
+                        <Form.Group className="mb-4">
                             <Form.Label className='form-label'>Email Address</Form.Label>
                             <Form.Control className=''
                                 type="email"
@@ -92,24 +92,24 @@ const Login = () => {
                 </Row>
             }
 
-            <Row className="mx-auto w-50">
+            {/* <Row className="mx-auto w-50">
                 <Col>
                     <a href="/password-reset">Forget Password?</a>
                 </Col>
-            </Row>
+            </Row> */}
 
-            <Row className="mx-auto w-50 py-3"> {/* padding-top, padding-bottom 1 rem */}
+            {/* <Row className="mx-auto w-50 py-3"> 
                 <Col>
-                    <div id='almondText'>Don't have an account yet?</div> <a href="/register">Register Now</a>
+                    <div>Don't have an account yet?</div> <a href="/register">Register Now</a>
                 </Col>
-            </Row>
+            </Row> */}
 
-            <Row className="mx-auto w-50">
+            <Row className="mx-auto w-50 mt-3">
                 <Col>
                     <Link to="/">Back to home page</Link>
                 </Col >
             </Row >
-        </Container >
+        </div >
     )
 }
 

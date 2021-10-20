@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { fetchTech, deleteSingleTech } from '../../api/tech.api';
 import DefaultLayout from '../../layout/DefaultLayout';
@@ -38,22 +38,20 @@ class Tech extends React.Component {
 
         return (
             <DefaultLayout>
-                <Container className='techPage mh-100 mw-100'>
+                <div className='tech-container'>
                     <Row>
-                        <Col>
-                            <h1 id='techTitle'> Tech List</h1>
+                        <Col sm={10}>
+                            <h1 className='tech-title'>Tech List</h1>
                         </Col>
-                    </Row>
-                    <Row className="mt-4">
+
                         <Col>
                             <Link to="/add-tech">
-                                <Button id='addNewTechBTN' data-toggle="button"> <div id='btnText'>Add New Tech</div> </Button>
+                                <Button variant="outline-primary" >Add New Tech</Button>
                             </Link>
                         </Col>
-
                     </Row>
 
-                    <Row xs={1} md={3} className="g-5 mt-2">
+                    <Row xs={1} md={3} className="g-5 mt-1">
                         {techs.length ? (
                             techs.map(tech => (
                                 <TechItem key={tech._id} tech={tech} deleteTech={deleteTech} />
@@ -62,7 +60,7 @@ class Tech extends React.Component {
                             <h1>No Tech Found!</h1>
                         )}
                     </Row>
-                </Container>
+                </div>
             </DefaultLayout>
         )
     };

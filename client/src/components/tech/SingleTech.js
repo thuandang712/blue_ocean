@@ -121,11 +121,13 @@ class SingleTech extends React.Component {
                                 <Form.Label column sm={3}>Phone Number</Form.Label>
                                 <Col sm={9}>
                                     <Form.Control
+                                        type="tel"
+                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                                         name="phone_number"
                                         value={phone_number}
-                                        maxLength="11"
                                         onChange={handleOnChange}
-                                        placeholder="Phone Number"
+                                        placeholder="123-456-7890"
+                                        maxLength='16'
                                         required
                                     />
                                     <Form.Text className="text-danger">

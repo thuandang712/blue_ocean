@@ -3,7 +3,7 @@ const { model, Schema } = require('mongoose');
 const techSchema = new Schema({
     first_name: { type: String, maxLength: 20, required: true },
     last_name: { type: String, maxLength: 20, required: true },
-    phone_number: { type: Number, maxLength: 11 },
+    phone_number: { type: String, maxLength: 16, required: true },
     email: { type: String, maxLength: 50, required: true, unique: true },
 
 

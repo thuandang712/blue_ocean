@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Row, Col, Button } from 'react-bootstrap'
 import { Link } from "react-router-dom";
 
 import { fetchTicket, deleteSingleTicket } from '../../api/ticket.api';
@@ -55,7 +55,7 @@ class Tickets extends React.Component {
 
         return (
             <DefaultLayout>
-                <Container>
+                <div className='ticket-container'>
                     <Row>
                         <Col>
                             <h1>Ticket Lists Page</h1>
@@ -77,7 +77,7 @@ class Tickets extends React.Component {
                             <TicketTable tickets={tickets} filtered={filtered} deleteTicket={deleteTicket} />
                         </Col>
                     </Row>
-                </Container>
+                </div>
             </DefaultLayout>
         )
     }

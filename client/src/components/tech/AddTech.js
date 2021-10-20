@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { Container, Form, Jumbotron, Row, Col, Button, Alert } from "react-bootstrap";
 import { createTech } from '../../api/tech.api';
 import DefaultLayout from '../../layout/DefaultLayout';
@@ -24,9 +23,8 @@ class AddTech extends React.Component {
 
 
         const handleOnChange = (e) => {
-            const key = e.target.name
-            const value = e.target.value
-            this.setState({ [key]: value })
+            const { name, value } = e.target
+            this.setState({ [name]: value })
         }
 
 
@@ -57,7 +55,7 @@ class AddTech extends React.Component {
                     <Jumbotron className="mt-3 add-new-ticket bg-light">
                         <Row>
                             <Col>
-                                <h1 className="text-info text-center mb-2">Add New Tech</h1>
+                                <h1 className="text-info text-center mb-2 addTechTitle">Add New Tech</h1>
                             </Col>
                         </Row>
 
@@ -72,7 +70,7 @@ class AddTech extends React.Component {
                         </Row>
 
                         <Form autoComplete="off" onSubmit={handleOnSubmit}>
-                            <Form.Group as={Row}>
+                            <Form.Group className='pb-2' as={Row}>
                                 <Form.Label column sm={3}>First Name</Form.Label>
                                 <Col sm={9}>
                                     <Form.Control
@@ -88,7 +86,7 @@ class AddTech extends React.Component {
                                 </Col>
                             </Form.Group>
 
-                            <Form.Group as={Row}>
+                            <Form.Group className='pb-2' as={Row}>
                                 <Form.Label column sm={3}>Last Name</Form.Label>
                                 <Col sm={9}>
                                     <Form.Control
@@ -104,15 +102,17 @@ class AddTech extends React.Component {
                                 </Col>
                             </Form.Group>
 
-                            <Form.Group as={Row}>
+                            <Form.Group className='pb-2' as={Row}>
                                 <Form.Label column sm={3}>Phone Number</Form.Label>
                                 <Col sm={9}>
                                     <Form.Control
+                                        type="tel"
+                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                                         name="phone_number"
                                         value={phone_number}
-                                        maxLength="11"
                                         onChange={handleOnChange}
-                                        placeholder="Phone Number"
+                                        placeholder="123-456-7890"
+                                        maxLength='16'
                                         required
                                     />
                                     <Form.Text className="text-danger">
@@ -121,7 +121,7 @@ class AddTech extends React.Component {
                             </Form.Group>
 
 
-                            <Form.Group as={Row}>
+                            <Form.Group className='pb-2' as={Row}>
                                 <Form.Label column sm={3}>Email</Form.Label>
                                 <Col sm={9}>
                                     <Form.Control
@@ -138,9 +138,8 @@ class AddTech extends React.Component {
                                 </Col>
                             </Form.Group>
 
-                            <Button type="submit" variant="info" block>
-                                Add Tech
-                            </Button>
+                            <Button type="submit" variant="info" className='mx-auto mt-3 d-block'>Add Tech</Button>
+
                         </Form>
                     </Jumbotron>
                 </Container>

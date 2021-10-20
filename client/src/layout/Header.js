@@ -17,33 +17,29 @@ const Header = () => {
 
 
     return (
-        <Container className='headCont mh-100 mw-100' >
-
-            <Navbar collapseOnSelect variant='dark' expand='md'>
-                <Navbar.Brand className="ms-5 my-2">
-
-                    {/* <img src={logo} alt='logo' width='175px' /> */}
-
-                    <h1 id='title'>Tickets Tracker</h1>
-
+        <Container className='headCont mw-100' >
+            <Navbar collapseOnSelect expand='md'>
+                <Navbar.Brand className="ms-5">
+                    <h1 className='logo-title'>Tickets Tracker</h1>
                 </Navbar.Brand>
+
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse id='basic-navbar-nav'>
                     <Nav className="ms-auto me-5">
 
                         <LinkContainer to='/dashboard'>
-                            <Nav.Link className="px-4"><div className='almondText'>DASHBOARD</div> </Nav.Link>
+                            <Nav.Link className="px-4"><div className='nav-bar-text'>DASHBOARD</div> </Nav.Link>
                         </LinkContainer>
 
                         <LinkContainer to='/tech'>
-                            <Nav.Link className="px-4"><div className='almondText'>TECH</div> </Nav.Link>
+                            <Nav.Link className="px-4"><div className='nav-bar-text'>TECH</div> </Nav.Link>
                         </LinkContainer>
 
                         <LinkContainer to='/ticket'>
-                            <Nav.Link className="px-4"> <div className='almondText'>TICKET</div></Nav.Link>
+                            <Nav.Link className="px-4"> <div className='nav-bar-text'>TICKET</div></Nav.Link>
                         </LinkContainer>
 
-                        <Nav.Link className="px-4" onClick={logMeOut}><div className='almondText'>LOGOUT</div></Nav.Link>
+                        <Nav.Link className="px-4" onClick={logMeOut}><div className='nav-bar-text'>LOGOUT</div></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
