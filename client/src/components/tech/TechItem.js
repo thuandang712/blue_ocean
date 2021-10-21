@@ -20,7 +20,7 @@ const TechItem = ({ tech, deleteTech }) => {
                     <ListGroup.Item className='tech-action ms-auto'>
                         <Link to='#'>
                             <Button variant="outline-danger" size='sm' onClick={() => {
-                                if (window.confirm('Are you sure you want to delete this ticket?'))
+                                if (window.confirm('Are you sure you want to delete this tech?'))
                                     deleteTech(tech._id)
                             }}>
                                 <FaTrash />
