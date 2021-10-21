@@ -46,7 +46,7 @@ class Tech extends React.Component {
 
                         <Col>
                             <Link to="/add-tech">
-                                <Button variant="outline-primary" >Add New Tech</Button>
+                                <Button variant="info">Add New Tech</Button>
                             </Link>
                         </Col>
                     </Row>
