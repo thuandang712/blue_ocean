@@ -5,8 +5,6 @@ import './App.css';
 
 import Entry from './pages/entry/Entry';
 import Login from './components/login/Login';
-// import Registration from "./pages/registration/registrationPage";
-// import PasswordOtpFormPage from './pages/password-reset/PasswordOtpFormPage';
 import Dashboard from './pages/dashboard/Dashboard'
 import Tech from './components/tech/Tech'
 import AddTech from './components/tech/AddTech'
@@ -38,8 +36,6 @@ class App extends React.Component {
             <Route exact path='/add-tech' component={AddTech}></Route>
             <Route exact path='/tech/edit/:_id' component={SingleTech}></Route>
 
-            {/* <Route exact path='/password-reset' component={PasswordOtpFormPage}></Route>
-            <Route exact path="/register" component={Registration}></Route> */}
           </Switch>
         </Router>
       </div>
